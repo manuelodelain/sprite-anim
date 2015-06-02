@@ -2,6 +2,12 @@ var raf = require('raf');
 var EventEmitter = require('events').EventEmitter;
 var inherits = require('util').inherits;
 
+var CanvasRenderer = require('./renderer/CanvasRenderer.js');
+var DomRenderer = require('./renderer/DOMRenderer.js');
+
+var SimpleParser = require('./parser/SimpleParser.js');
+var JSONArrayParser = require('./parser/JSONArrayParser.js');
+
 var SpriteAnim = function(parser, renderer, options) {
   this.parser = parser;
   this.renderer = renderer;
@@ -123,6 +129,12 @@ SpriteAnim.prototype.onEnterFrame = function() {
     this.emit('enterFrame');
   }
 };
+
+SpriteAnim.CanvasRenderer = CanvasRenderer;
+SpriteAnim.DomRenderer = DomRenderer;
+
+SpriteAnim.SimpleParser = SimpleParser;
+SpriteAnim.JSONArrayParser = JSONArrayParser;
 
 module.exports = SpriteAnim;
 
