@@ -4,11 +4,17 @@
   "description": "Simple spritesheet animation engine",
   "main": "src/SpriteAnim.js",
   "scripts": {
+    "watch": "watchify src/SpriteAnim.js -o dist/sprite-anim.js -dv",
+    "build": "browserify src/SpriteAnim.js -o dist/sprite-anim.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Manuel Odelain",
   "license": "ISC",
   "dependencies": {
     "raf": "^3.0.0"
+  },
+  "devDependencies": {
+    "browserify": "^10.2.3",
+    "watchify": "^3.2.1"
   }
 }
