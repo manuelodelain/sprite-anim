@@ -3,8 +3,39 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
+  <title>Sprite anim</title>
+  <style>
+    #anim{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 470px;
+      height: 120px;
+      margin-top: -60px;
+      margin-left: -235px;
+      background-size: 1410px 3960px;
+    }
+  </style>
 </head>
 <body>
+  <div id="anim"></div>
+  <script src="../../dist/sprite-anim.js"></script>
+  <script>
+    var animElt = document.getElementById('anim');
+    var renderer = new SpriteAnim.DOMRenderer(animElt);
+    var parser = new SpriteAnim.SimpleParser({width: 1410, height: 3960}, {width: 470, height: 120});
+    var anim = new SpriteAnim(parser, renderer, {frameRate: 25});
+
+    var img = new Image();
+
+    img.addEventListener('load', function(){
+      animElt.style.backgroundImage = 'url(' + img.src + ')';
+
+      anim.loop = true;
+      anim.play();
+    });
+
+    img.src = '../images/anim.png';
+  </script>
 </body>
 </html>

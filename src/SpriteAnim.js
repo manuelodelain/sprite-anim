@@ -3,7 +3,7 @@ var EventEmitter = require('events').EventEmitter;
 var inherits = require('util').inherits;
 
 var CanvasRenderer = require('./renderer/CanvasRenderer.js');
-var DomRenderer = require('./renderer/DOMRenderer.js');
+var DOMRenderer = require('./renderer/DOMRenderer.js');
 
 var SimpleParser = require('./parser/SimpleParser.js');
 var JSONArrayParser = require('./parser/JSONArrayParser.js');
@@ -95,7 +95,7 @@ SpriteAnim.prototype.onComplete = function() {
   this.emit('complete');
   
   if (this.loop) {
-    if (!this.reversed) gotoAndPlay(0);
+    if (!this.reversed) this.gotoAndPlay(0);
     else gotoAndPlay(this.totalFrames);
   } else {
     this.pause();
@@ -131,7 +131,7 @@ SpriteAnim.prototype.onEnterFrame = function() {
 };
 
 SpriteAnim.CanvasRenderer = CanvasRenderer;
-SpriteAnim.DomRenderer = DomRenderer;
+SpriteAnim.DOMRenderer = DOMRenderer;
 
 SpriteAnim.SimpleParser = SimpleParser;
 SpriteAnim.JSONArrayParser = JSONArrayParser;
