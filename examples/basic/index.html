@@ -19,6 +19,8 @@
 </head>
 <body>
   <div id="anim"></div>
+
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script>-->
   <script src="../../dist/sprite-anim.js"></script>
   <script>
     var animElt = document.getElementById('anim');
@@ -31,7 +33,6 @@
     img.addEventListener('load', function(){
       animElt.style.backgroundImage = 'url(' + img.src + ')';
 
-      anim.loop = true;
       anim.play();
     });
 
