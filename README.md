@@ -2,7 +2,7 @@
 
 sprite-anim is a simple spritesheet animation engine.
 
-### Install
+### Installation
 `npm install sprite-anim`
 
 ### Features
@@ -17,7 +17,9 @@ sprite-anim is a simple spritesheet animation engine.
 
 ## Documentation
 
-### DOM element with spritesheet and frame dimensions
+### Examples
+
+#### DOM element with spritesheet and frame dimensions
 
 ```
 var animElt = document.getElementById('anim');
@@ -28,7 +30,7 @@ var anim = new SpriteAnim(parser, renderer, {frameRate: 25});
 anim.play();
 ```
 
-### Canvas element with frames data
+#### Canvas element with frames data
 
 ```
 var animElt = document.getElementById('anim');
