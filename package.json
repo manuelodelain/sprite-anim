@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Manuel Odelain",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "raf": "^3.0.0"
   },
