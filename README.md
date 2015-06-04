@@ -140,6 +140,8 @@ CustomRenderer.prototype.render = function(frame){
  
 ##### frameRate `Number` 
  
+##### numFrames `Number` 
+
 ##### currentFrame `Number` 
  
 ##### isPlaying `Boolean` 
