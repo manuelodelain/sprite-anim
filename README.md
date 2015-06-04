@@ -65,9 +65,25 @@ anim.play();
 
 #### SimpleParser
 
+
 #### JSONArrayParser
 
 #### Custom parser
+You can implement your own parser.
+
+A parser must have these properties : 
+- `numFrames`: number of frames
+- `frames`: an array of frames `{x, y, index, width, height}`
+
+##### Example
+```
+var CustomParser = function(framesData){
+  this.numFrames = 0;
+  this.frames = [];
+
+  // populate frames and increment numFrames
+};
+```
 
 
 ### Renderers
@@ -77,7 +93,20 @@ anim.play();
 #### CanvasRenderer
 
 #### Custom renderer
+You can implement your own renderer.
 
+A renderer must have a `render` method with a parameter `frame`.
+The `frame` param is an `object` with properties `{x, y, index, width, height}`.
+
+##### Example
+```
+var CustomRenderer = function(){
+};
+
+CustomRenderer.prototype.render = function(frame){
+  // draw the frame
+};
+```
 
 ### SpriteAnim
 
