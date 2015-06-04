@@ -7,15 +7,35 @@ sprite-anim is a simple spritesheet animation engine.
 
 ### Features
 - common API (play / pause / stop / gotoAndPlay / gotoAndStop / dispose)
-- ajust frameRate, loop
-- initialize frames with data (JSONArrayParser), automaticaly with dimensions (SimpleParser) or your own custom parser
-- works with DOM element (DOMRenderer), canvas element (CanvasRenderer) or your own custom renderer
+- options: frameRate, loop
+- initialize frames with data (JSONArrayParser), automatically with dimensions (SimpleParser) or your own custom parser
+- works with DOM elements (DOMRenderer), canvas element (CanvasRenderer) or your own custom renderer
 
 ### Browser compatibility
-- IE 6+ with DOM element, IE 9+ with DOM and canvas element
-
+IE 6+ with DOM element, IE 9+ with DOM and canvas element. 
+If you need to support IE 8- use [es5-shim](https://github.com/es-shims/es5-shim) for EcmaScript 5 methods compatibility.
 
 ## Documentation
+
+### Use
+#### Browserify
+```
+var SpriteAnim = require('sprite-anim');
+````
+
+#### AMD
+```
+require(['sprite-anim.js'], function(SpriteAnim){
+});
+````
+
+#### Script tag
+```
+<script src="path/to/file/sprite-anim.js"></script>
+<script>
+  // global variable SpriteAnim
+</script>
+````
 
 ### Examples
 
@@ -40,5 +60,30 @@ var anim = new SpriteAnim(parser, renderer, {frameRate: 25});
 
 anim.play();
 ```
+
+### Parsers
+
+#### SimpleParser
+
+#### JSONArrayParser
+
+#### Custom parser
+
+
+### Renderers
+
+#### DOMRenderer
+
+#### CanvasRenderer
+
+#### Custom renderer
+
+
+### SpriteAnim
+
+
+
+
+
 
 
