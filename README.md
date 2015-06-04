@@ -7,7 +7,6 @@ sprite-anim is a simple spritesheet animation engine.
 
 ### Features
 - common API (play / pause / stop / gotoAndPlay / gotoAndStop / dispose)
-- options: frameRate, loop
 - initialize frames with data (JSONArrayParser), automatically with dimensions (SimpleParser) or your own custom parser
 - works with DOM elements (DOMRenderer), canvas element (CanvasRenderer) or your own custom renderer
 
@@ -64,9 +63,18 @@ anim.play();
 ### Parsers
 
 #### SimpleParser
+Initialize frames directly with spritesheet image dimensions and frame dimensions.
 
+##### Params
+- `spriteSize`: `Object` `{width: Number, height: Number}`
+- `frameSize`: `Object` `{width: Number, height: Number}`
 
 #### JSONArrayParser
+Initialize frames with an `Array` of frames data, following the TexturePacker JSONArray output.
+
+##### Params
+- `data`: `Object`
+- `scaleFactor` (optional): `Number`
 
 #### Custom parser
 You can implement your own parser.
@@ -89,8 +97,17 @@ var CustomParser = function(framesData){
 ### Renderers
 
 #### DOMRenderer
+Render frame with a DOM element (`background-position`).
+
+##### Params
+- `element`: DOM element
 
 #### CanvasRenderer
+Render frame with a `canvas` element (`drawImage`).
+
+##### Params
+- `canvas`: canvas element
+- `sprite`: `Image` spritesheet image
 
 #### Custom renderer
 You can implement your own renderer.
@@ -110,27 +127,50 @@ CustomRenderer.prototype.render = function(frame){
 
 ### SpriteAnim
 
+#### create instance
+`new SpriteAnim(parser, renderer, options)`
+
+##### options (`Object`)
+- `frameRate` (`Number`)
+- `loop` (`Boolean`)
+
 #### properties
 
 ##### loop
+`Boolean`
+
+##### frameRate
+`Number`
+
 ##### currentFrame
+`Number`
+
+##### isPlaying 
+`Boolean`
+
 ##### complete
-##### isPlaying
+`Boolean`
 
 
 #### methods
 
-##### play
-##### pause
-##### stop
-##### gotoAndPlay
-##### gotoAndStop
-##### dispose
+##### play()
+
+##### pause()
+
+##### stop()
+
+##### gotoAndPlay(frameIndex)
+
+##### gotoAndStop(frameIndex)
+
+##### dispose()
 
 
 #### events
 
 ##### complete
+
 ##### enterFrame
 
 

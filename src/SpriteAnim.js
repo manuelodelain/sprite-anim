@@ -32,9 +32,9 @@ var SpriteAnim = function(parser, renderer, options) {
   this.reversed = false;
   this.complete = false;
 	
-	this.now;
-	this.then = Date.now();
-	this.delta;
+  this.now;
+  this.then = Date.now();
+  this.delta;
   this.interval = 1000 / this.frameRate;
 
   if (this.totalFrames === 0) this.totalFrames = parser.numFrames;
