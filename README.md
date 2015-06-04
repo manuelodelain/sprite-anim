@@ -11,7 +11,7 @@ sprite-anim is a simple spritesheet animation engine.
 - works with DOM elements (DOMRenderer), canvas element (CanvasRenderer) or your own custom renderer
 
 ### Browser compatibility
-IE 6+ with DOM element, IE 9+ with DOM and canvas element. 
+IE 6+ with DOM element, IE 9+ with DOM and canvas element.    
 If you need to support IE 8- use [es5-shim](https://github.com/es-shims/es5-shim) for EcmaScript 5 methods compatibility.
 
 ## Documentation
@@ -136,22 +136,17 @@ CustomRenderer.prototype.render = function(frame){
 
 #### properties
 
-##### loop
-`Boolean`
+##### loop `Boolean`
 
-##### frameRate
-`Number`
+##### frameRate `Number`
 
-##### currentFrame
-`Number`
+##### currentFrame `Number`
 
-##### isPlaying 
-`Boolean`
+##### isPlaying `Boolean`
 
-##### complete
-`Boolean`
+##### complete `Boolean`
 
-
+   
 #### methods
 
 ##### play()
@@ -166,7 +161,7 @@ CustomRenderer.prototype.render = function(frame){
 
 ##### dispose()
 
-
+    
 #### events
 
 ##### complete
