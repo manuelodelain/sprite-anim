@@ -8,9 +8,9 @@ var SpriteAnim = function(parser, renderer, options) {
   
   this.frameRate = options && options.frameRate ? options.frameRate : 60;
   this.loop = options && options.loop ? options.loop : false;
-  this.totalFrames = options && options.totalFrames ? options.totalFrames : parser.numFrames;
+  this.numFrames = options && options.numFrames ? options.numFrames : parser.numFrames;
 
-  this.lastFrame = this.totalFrames - 1;
+  this.lastFrame = this.numFrames - 1;
 
   this.enterFrameId = -1;
   this.enterFrame = this.onEnterFrame.bind(this);
@@ -81,7 +81,7 @@ SpriteAnim.prototype.onComplete = function() {
   
   if (this.loop) {
     if (!this.reversed) this.gotoAndPlay(0);
-    else gotoAndPlay(this.totalFrames);
+    else gotoAndPlay(this.numFrames);
   } else {
     this.pause();
   }
