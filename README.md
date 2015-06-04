@@ -125,8 +125,9 @@ CustomRenderer.prototype.render = function(frame){
 };
 ```
 
-### SpriteAnim
-
+### SpriteAnim 
+ 
+ 
 #### create instance
 `new SpriteAnim(parser, renderer, options)`
 
@@ -134,10 +135,13 @@ CustomRenderer.prototype.render = function(frame){
 - `frameRate` (`Number`)
 - `loop` (`Boolean`) 
  
+
 #### properties 
  
 ##### loop `Boolean` 
  
+##### yoyo `Boolean` 
+
 ##### frameRate `Number` 
  
 ##### numFrames `Number` 
@@ -148,7 +152,7 @@ CustomRenderer.prototype.render = function(frame){
  
 ##### complete `Boolean` 
  
- 
+
 #### methods 
  
 ##### play() 
@@ -164,6 +168,7 @@ CustomRenderer.prototype.render = function(frame){
 ##### dispose() 
  
  
+
 #### events 
  
 ##### complete 
