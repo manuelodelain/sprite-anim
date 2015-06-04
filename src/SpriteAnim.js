@@ -2,12 +2,6 @@ var raf = require('raf');
 var EventEmitter = require('events').EventEmitter;
 var inherits = require('util').inherits;
 
-var CanvasRenderer = require('./renderer/CanvasRenderer.js');
-var DOMRenderer = require('./renderer/DOMRenderer.js');
-
-var SimpleParser = require('./parser/SimpleParser.js');
-var JSONArrayParser = require('./parser/JSONArrayParser.js');
-
 var SpriteAnim = function(parser, renderer, options) {
   this.parser = parser;
   this.renderer = renderer;
@@ -130,11 +124,11 @@ SpriteAnim.prototype.onEnterFrame = function() {
   }
 };
 
-SpriteAnim.CanvasRenderer = CanvasRenderer;
-SpriteAnim.DOMRenderer = DOMRenderer;
-
-SpriteAnim.SimpleParser = SimpleParser;
-SpriteAnim.JSONArrayParser = JSONArrayParser;
-
 module.exports = SpriteAnim;
+
+module.exports.CanvasRenderer = require('./renderer/CanvasRenderer.js');
+module.exports.DOMRenderer = require('./renderer/DOMRenderer.js');
+
+module.exports.SimpleParser = require('./parser/SimpleParser.js');
+module.exports.JSONArrayParser = require('./parser/JSONArrayParser.js');
 
