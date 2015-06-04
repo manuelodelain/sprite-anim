@@ -2,6 +2,11 @@
   "name": "sprite-anim",
   "version": "0.0.3",
   "description": "Simple spritesheet animation engine",
+  "keywords": [
+    "spritesheet",
+    "sprites",
+    "animation"
+  ],
   "main": "src/SpriteAnim.js",
   "scripts": {
     "watch": "watchify src/SpriteAnim.js --standalone SpriteAnim -o dist/sprite-anim.js -dv",
