@@ -6,33 +6,24 @@ var SpriteAnim = function(parser, renderer, options) {
   this.parser = parser;
   this.renderer = renderer;
   
-  this.frameRate = 60;
-  this.loop = false;
-  this.totalFrames = 0;
+  this.frameRate = options && options.frameRate ? options.frameRate : 60;
+  this.loop = options && options.loop ? options.loop : false;
+  this.totalFrames = options && options.totalFrames ? options.totalFrames : parser.numFrames;
 
-  if (options) {
-    if (options.frameRate) this.frameRate = options.frameRate;
-    if (options.loop) this.loop = options.loop;
-    if (options.totalFrames) this.totalFrames = options.totalFrames;
-  }
-  
-  this.onCompleteCallback = null;
+  this.lastFrame = this.totalFrames - 1;
+
   this.enterFrameId = -1;
   this.enterFrame = this.onEnterFrame.bind(this);
 
   this.currentFrame = 0;
-  this.lastFrame = 0;
   this.isPlaying = false;
   this.reversed = false;
   this.complete = false;
-	
-  this.now;
+  
+  this.now = 0;
   this.then = Date.now();
-  this.delta;
+  this.delta = 0;
   this.interval = 1000 / this.frameRate;
-
-  if (this.totalFrames === 0) this.totalFrames = parser.numFrames;
-  this.lastFrame = this.totalFrames - 1;
 };
 
 inherits(SpriteAnim, EventEmitter);
