@@ -132,40 +132,40 @@ CustomRenderer.prototype.render = function(frame){
 
 ##### options (`Object`)
 - `frameRate` (`Number`)
-- `loop` (`Boolean`)
-
-#### properties
-
-##### loop `Boolean`
-
-##### frameRate `Number`
-
-##### currentFrame `Number`
-
-##### isPlaying `Boolean`
-
-##### complete `Boolean`
-
-   
-#### methods
-
-##### play()
-
-##### pause()
-
-##### stop()
-
-##### gotoAndPlay(frameIndex)
-
-##### gotoAndStop(frameIndex)
-
-##### dispose()
-
-    
-#### events
-
-##### complete
-
+- `loop` (`Boolean`) 
+ 
+#### properties 
+ 
+##### loop `Boolean` 
+ 
+##### frameRate `Number` 
+ 
+##### currentFrame `Number` 
+ 
+##### isPlaying `Boolean` 
+ 
+##### complete `Boolean` 
+ 
+ 
+#### methods 
+ 
+##### play() 
+ 
+##### pause() 
+ 
+##### stop() 
+ 
+##### gotoAndPlay(frameIndex) 
+ 
+##### gotoAndStop(frameIndex) 
+ 
+##### dispose() 
+ 
+ 
+#### events 
+ 
+##### complete 
+ 
 ##### enterFrame
 
 
