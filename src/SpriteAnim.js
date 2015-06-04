@@ -8,6 +8,7 @@ var SpriteAnim = function(parser, renderer, options) {
   
   this.frameRate = options && options.frameRate ? options.frameRate : 60;
   this.loop = options && options.loop ? options.loop : false;
+  this.yoyo = options && options.yoyo ? options.yoyo : false;
   this.numFrames = options && options.numFrames ? options.numFrames : parser.numFrames;
 
   this.lastFrame = this.numFrames - 1;
@@ -80,8 +81,10 @@ SpriteAnim.prototype.onComplete = function() {
   this.emit('complete');
   
   if (this.loop) {
+    if (this.yoyo) this.reversed = !this.reversed;
+
     if (!this.reversed) this.gotoAndPlay(0);
-    else gotoAndPlay(this.numFrames);
+    else this.gotoAndPlay(this.lastFrame);
   } else {
     this.pause();
   }
