@@ -3,7 +3,7 @@
 sprite-anim is a simple spritesheet animation engine.
 
 ### Installation
-`npm install sprite-anim`
+`npm install sprite-anim --save`
 
 ### Features
 - common API (play / pause / stop / gotoAndPlay / gotoAndStop / dispose)
@@ -110,7 +110,28 @@ CustomRenderer.prototype.render = function(frame){
 
 ### SpriteAnim
 
+#### properties
 
+##### loop
+##### currentFrame
+##### complete
+##### isPlaying
+
+
+#### methods
+
+##### play
+##### pause
+##### stop
+##### gotoAndPlay
+##### gotoAndStop
+##### dispose
+
+
+#### events
+
+##### complete
+##### enterFrame
 
 
 
