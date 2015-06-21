@@ -5,7 +5,8 @@ var inherits = require('util').inherits;
 var SpriteAnim = function(parser, renderer, options) {
   this.parser = parser;
   this.renderer = renderer;
-  
+
+  this.manualUpdate = options && options.manualUpdate ? options.manualUpdate : false;
   this.frameRate = options && options.frameRate ? options.frameRate : 60;
   this.loop = options && options.loop ? options.loop : false;
   this.yoyo = options && options.yoyo ? options.yoyo : false;
@@ -20,7 +21,7 @@ var SpriteAnim = function(parser, renderer, options) {
   this.isPlaying = false;
   this.reversed = false;
   this.complete = false;
-  
+
   this.now = 0;
   this.then = Date.now();
   this.delta = 0;
@@ -39,14 +40,16 @@ SpriteAnim.prototype.play = function() {
 SpriteAnim.prototype.pause = function() {
   this.isPlaying = false;
 
-  raf.cancel(this.enterFrameId);
-};  
+  if(!this.manualUpdate) {
+    raf.cancel(this.enterFrameId);
+  }
+};
 
 SpriteAnim.prototype.stop = function() {
   this.pause();
   this.currentFrame = 0;
 };
-  
+
 SpriteAnim.prototype.gotoAndPlay = function(frame) {
   this.currentFrame = frame;
   this.complete = false;
@@ -79,7 +82,7 @@ SpriteAnim.prototype.renderFrame = function() {
 
 SpriteAnim.prototype.onComplete = function() {
   this.emit('complete');
-  
+
   if (this.loop) {
     if (this.yoyo) this.reversed = !this.reversed;
 
@@ -99,7 +102,10 @@ SpriteAnim.prototype.onEnterFrame = function() {
   this.now = Date.now();
   this.delta = this.now - this.then;
 
-  this.enterFrameId = raf(this.enterFrame);
+  if(!this.manualUpdate) {
+    this.enterFrameId = raf(this.enterFrame);
+  }
+
 
   if (this.delta > this.interval) {
     this.then = this.now - (this.delta % this.interval);
@@ -125,4 +131,3 @@ module.exports.DOMRenderer = require('./renderer/DOMRenderer.js');
 
 module.exports.SimpleParser = require('./parser/SimpleParser.js');
 module.exports.JSONArrayParser = require('./parser/JSONArrayParser.js');
-
