@@ -11,7 +11,7 @@ sprite-anim is a simple spritesheet animation engine.
 - works with DOM elements (DOMRenderer), canvas element (CanvasRenderer) or your own custom renderer
 
 ### Browser compatibility
-IE 6+ with DOM element, IE 9+ with DOM and canvas element.    
+IE 6+ with DOM element, IE 9+ with DOM and canvas element.
 If you need to support IE 8- use [es5-shim](https://github.com/es-shims/es5-shim) for EcmaScript 5 methods compatibility.
 
 ## Documentation
@@ -79,7 +79,7 @@ Initialize frames with an `Array` of frames data, following the TexturePacker JS
 #### Custom parser
 You can implement your own parser.
 
-A parser must have these properties : 
+A parser must have these properties :
 - `numFrames`: number of frames
 - `frames`: an array of frames `{x, y, index, width, height}`
 
@@ -125,57 +125,53 @@ CustomRenderer.prototype.render = function(frame){
 };
 ```
 
-### SpriteAnim 
- 
- 
+### SpriteAnim
+
+
 #### create instance
 `new SpriteAnim(parser, renderer, options)`
 
 ##### options (`Object`)
 - `frameRate` (`Number`)
-- `loop` (`Boolean`) 
- 
+- `loop` (`Boolean`)
+- `manualUpdate` (`Boolean`) 
 
-#### properties 
- 
-##### loop `Boolean` 
- 
-##### yoyo `Boolean` 
 
-##### frameRate `Number` 
- 
-##### numFrames `Number` 
+#### properties
 
-##### currentFrame `Number` 
- 
-##### isPlaying `Boolean` 
- 
-##### complete `Boolean` 
- 
+##### loop `Boolean`
 
-#### methods 
- 
-##### play() 
- 
-##### pause() 
- 
-##### stop() 
- 
-##### gotoAndPlay(frameIndex) 
- 
-##### gotoAndStop(frameIndex) 
- 
-##### dispose() 
- 
- 
+##### yoyo `Boolean`
 
-#### events 
- 
-##### complete 
- 
+##### frameRate `Number`
+
+##### numFrames `Number`
+
+##### currentFrame `Number`
+
+##### isPlaying `Boolean`
+
+##### complete `Boolean`
+
+
+#### methods
+
+##### play()
+
+##### pause()
+
+##### stop()
+
+##### gotoAndPlay(frameIndex)
+
+##### gotoAndStop(frameIndex)
+
+##### dispose()
+
+
+
+#### events
+
+##### complete
+
 ##### enterFrame
-
-
-
-
-
