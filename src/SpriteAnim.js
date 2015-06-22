@@ -3,14 +3,22 @@ var EventEmitter = require('events').EventEmitter;
 var inherits = require('util').inherits;
 
 var SpriteAnim = function(parser, renderer, options) {
+  options = options || {};
+
   this.parser = parser;
   this.renderer = renderer;
 
-  this.manualUpdate = options && options.manualUpdate ? options.manualUpdate : false;
-  this.frameRate = options && options.frameRate ? options.frameRate : 60;
-  this.loop = options && options.loop ? options.loop : false;
-  this.yoyo = options && options.yoyo ? options.yoyo : false;
-  this.numFrames = options && options.numFrames ? options.numFrames : parser.numFrames;
+  var defaultOptions = {
+    manualUpdate: false,
+    frameRate: 60,
+    loop: false,
+    yoyo: false,
+    numFrames: parser.numFrames
+  };
+
+  for (var optionName in defaultOptions){
+    this[optionName] = options[optionName] || defaultOptions[optionName];
+  }
 
   this.lastFrame = this.numFrames - 1;
 
@@ -100,7 +108,7 @@ SpriteAnim.prototype.onComplete = function() {
 SpriteAnim.prototype.onEnterFrame = function(elapsedTime) {
   if (!elapsedTime){
     this.now = Date.now();
-    
+
     elapsedTime = this.now - this.then;
   }
 
@@ -108,7 +116,7 @@ SpriteAnim.prototype.onEnterFrame = function(elapsedTime) {
     this.enterFrameId = raf(this.enterFrame);
   }
 
-  if (this.delta > this.interval) {
+  if (elapsedTime > this.interval) {
     this.then = this.now - (elapsedTime % this.interval);
 
     this.renderFrame();
