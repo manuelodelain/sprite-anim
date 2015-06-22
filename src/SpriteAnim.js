@@ -40,7 +40,9 @@ SpriteAnim.prototype.play = function() {
   this.isPlaying = true;
   this.complete = false;
 
-  this.enterFrameId = raf(this.enterFrame);
+  if(!this.manualUpdate) {
+    this.enterFrameId = raf(this.enterFrame);
+  }
 };
 
 SpriteAnim.prototype.pause = function() {
