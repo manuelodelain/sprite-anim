@@ -80,6 +80,11 @@ SpriteAnim.prototype.renderFrame = function() {
   this.renderer.render(this.parser.frames[this.currentFrame]);
 };
 
+SpriteAnim.prototype.dispose = function() {
+  this.stop();
+  this.removeAllListeners();
+};
+
 SpriteAnim.prototype.onComplete = function() {
   this.emit('complete');
 
@@ -91,11 +96,6 @@ SpriteAnim.prototype.onComplete = function() {
   } else {
     this.pause();
   }
-};
-
-SpriteAnim.prototype.dispose = function() {
-  this.stop();
-  this.removeAllListeners();
 };
 
 SpriteAnim.prototype.onEnterFrame = function() {
