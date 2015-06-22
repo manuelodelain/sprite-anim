@@ -24,7 +24,6 @@ var SpriteAnim = function(parser, renderer, options) {
 
   this.now = 0;
   this.then = Date.now();
-  this.delta = 0;
   this.interval = 1000 / this.frameRate;
 };
 
@@ -98,17 +97,19 @@ SpriteAnim.prototype.onComplete = function() {
   }
 };
 
-SpriteAnim.prototype.onEnterFrame = function() {
-  this.now = Date.now();
-  this.delta = this.now - this.then;
+SpriteAnim.prototype.onEnterFrame = function(elapsedTime) {
+  if (!elapsedTime){
+    this.now = Date.now();
+    
+    elapsedTime = this.now - this.then;
+  }
 
   if(!this.manualUpdate) {
     this.enterFrameId = raf(this.enterFrame);
   }
 
-
   if (this.delta > this.interval) {
-    this.then = this.now - (this.delta % this.interval);
+    this.then = this.now - (elapsedTime % this.interval);
 
     this.renderFrame();
 
