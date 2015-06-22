@@ -15,9 +15,9 @@
   },
   "author": "Manuel Odelain",
   "license": "MIT",
-  "repository": { 
-    "type" : "git", 
-    "url" : "https://github.com/manuelodelain/sprite-anim.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manuelodelain/sprite-anim.git"
   },
   "dependencies": {
     "raf": "^3.0.0"

@@ -30,8 +30,7 @@ var SpriteAnim = function(parser, renderer, options) {
   this.reversed = false;
   this.complete = false;
 
-  this.now = 0;
-  this.then = Date.now();
+  this.lastFrameTime = 0;
   this.interval = 1000 / this.frameRate;
 };
 
@@ -41,7 +40,7 @@ SpriteAnim.prototype.play = function() {
   this.isPlaying = true;
   this.complete = false;
 
-  this.onEnterFrame();
+  this.enterFrameId = raf(this.enterFrame);
 };
 
 SpriteAnim.prototype.pause = function() {
@@ -105,19 +104,13 @@ SpriteAnim.prototype.onComplete = function() {
   }
 };
 
-SpriteAnim.prototype.onEnterFrame = function(elapsedTime) {
-  if (!elapsedTime){
-    this.now = Date.now();
-
-    elapsedTime = this.now - this.then;
-  }
-
+SpriteAnim.prototype.onEnterFrame = function(timeStamp) {
   if(!this.manualUpdate) {
     this.enterFrameId = raf(this.enterFrame);
   }
 
-  if (elapsedTime > this.interval) {
-    this.then = this.now - (elapsedTime % this.interval);
+  if (timeStamp - this.lastFrameTime > this.interval || this.lastFrameTime === 0) {
+    this.lastFrameTime = timeStamp;
 
     this.renderFrame();
 
@@ -140,3 +133,4 @@ module.exports.DOMRenderer = require('./renderer/DOMRenderer.js');
 
 module.exports.SimpleParser = require('./parser/SimpleParser.js');
 module.exports.JSONArrayParser = require('./parser/JSONArrayParser.js');
+
