@@ -187,6 +187,10 @@ Go to a frame index and play animation
 ##### `gotoAndStop(frameIndex)`
 Go to a frame index and pause animation
 
+##### `onEnterFrame(timeStamp)`
+Called internally each frame.
+If you add the `manualUpdate` option and call this method directly in a external render loop you have to pass a `timeStamp` argument (from the requestAnimationFrame callback).
+
 ##### `dispose()`
 Dispose SpriteAnim instance
 
