@@ -8,7 +8,7 @@ sprite-anim is a simple spritesheet animation engine.
 ### Features
 - common API (play / pause / stop / gotoAndPlay / gotoAndStop / dispose)
 - initialize frames with data (JSONArrayParser), automatically with dimensions (SimpleParser) or your own custom parser
-- works with DOM elements (DOMRenderer), canvas element (CanvasRenderer) or your own custom renderer
+- works with DOM elements (DOMRenderer), canvas element (CanvasRenderer), off-screen canvas (OffScreenCanvasRenderer) or your own custom renderer
 
 ### Browser compatibility
 IE 6+ with DOM element, IE 9+ with DOM and canvas element.
@@ -131,47 +131,72 @@ CustomRenderer.prototype.render = function(frame){
 #### create instance
 `new SpriteAnim(parser, renderer, options)`
 
-##### options (`Object`)
+##### `options` (`Object`)
 - `frameRate` (`Number`)
+Animation frame rate (default: `60`)
 - `loop` (`Boolean`)
+If `true` loop animation (default: `false`)
+- `yoyo` (`Boolean`)
+If `true` repeat from end when looping (default: `false`)
+- `numFrames` (`Boolean`)
+Force total frames
 - `manualUpdate` (`Boolean`) 
+If `true` the animation will not update itself. (default: `false`)
+You'll have to update it manually with an explicit `onEnterFrame()` call on a custom render loop.
 
 
 #### properties
 
-##### loop `Boolean`
+##### `loop` (`Boolean`)
+If `true` loop animation (default: `false`)
 
-##### yoyo `Boolean`
+##### `yoyo` (`Boolean`)
+If `true` repeat from end when looping (default: `false`)
 
-##### frameRate `Number`
 
-##### numFrames `Number`
+##### `frameRate` (`Number`)
+Animation frame rate 
 
-##### currentFrame `Number`
+##### `numFrames` (`Number`)
+Total frames
 
-##### isPlaying `Boolean`
+##### `currentFrame` (`Number`)
+Current frame index
 
-##### complete `Boolean`
+##### `isPlaying` (`Boolean`)
+`true` if animation currently playing
+
+##### `complete` (`Boolean`)
+`true` if animation complete
 
 
 #### methods
 
-##### play()
+##### `play()`
+Play animation
 
-##### pause()
+##### `pause()`
+Pause animation
 
-##### stop()
+##### `stop()`
+Pause and reset animation (frame index = 0)
 
-##### gotoAndPlay(frameIndex)
+##### `gotoAndPlay(frameIndex)`
+Go to a frame index and play animation
 
-##### gotoAndStop(frameIndex)
+##### `gotoAndStop(frameIndex)`
+Go to a frame index and pause animation
 
-##### dispose()
-
+##### `dispose()`
+Dispose SpriteAnim instance
 
 
 #### events
 
-##### complete
+##### `complete`
+Dispatched when animation ended
 
-##### enterFrame
+##### `enterFrame`
+Dispatched on each frame
+
+
