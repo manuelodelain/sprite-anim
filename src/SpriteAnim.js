@@ -126,6 +126,7 @@ SpriteAnim.prototype.onEnterFrame = function() {
 
 module.exports = SpriteAnim;
 
+module.exports.OneCanvasRenderer = require('./renderer/OneCanvasRenderer.js');
 module.exports.CanvasRenderer = require('./renderer/CanvasRenderer.js');
 module.exports.DOMRenderer = require('./renderer/DOMRenderer.js');
 

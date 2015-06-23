@@ -15,15 +15,25 @@
   },
   "author": "Manuel Odelain",
   "license": "MIT",
-  "repository": { 
-    "type" : "git", 
-    "url" : "https://github.com/manuelodelain/sprite-anim.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manuelodelain/sprite-anim.git"
   },
   "dependencies": {
     "raf": "^3.0.0"
   },
   "devDependencies": {
-    "browserify": "^10.2.3",
+    "browserify": "^10.2.4",
+    "browserify-shim": "^3.8.9",
+    "domready": "^1.0.8",
     "watchify": "^3.2.1"
-  }
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim",
+      "brfs"
+    ]
+  },
+  "browserify-shim": {},
+  "browser": {}
 }

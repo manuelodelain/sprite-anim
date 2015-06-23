@@ -1,0 +1,552 @@
+{"frames": [
+
+{
+	"filename": "particle_hover_04_00000.png",
+	"frame": {"x":2,"y":2,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00001.png",
+	"frame": {"x":2,"y":128,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00002.png",
+	"frame": {"x":108,"y":2,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00003.png",
+	"frame": {"x":2,"y":254,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00004.png",
+	"frame": {"x":2,"y":380,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00005.png",
+	"frame": {"x":108,"y":128,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00006.png",
+	"frame": {"x":214,"y":2,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00007.png",
+	"frame": {"x":108,"y":254,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00008.png",
+	"frame": {"x":108,"y":380,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00009.png",
+	"frame": {"x":214,"y":128,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00010.png",
+	"frame": {"x":320,"y":2,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00011.png",
+	"frame": {"x":214,"y":254,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00012.png",
+	"frame": {"x":214,"y":380,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00013.png",
+	"frame": {"x":320,"y":128,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00014.png",
+	"frame": {"x":426,"y":2,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00015.png",
+	"frame": {"x":320,"y":254,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00016.png",
+	"frame": {"x":320,"y":380,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00017.png",
+	"frame": {"x":426,"y":128,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00018.png",
+	"frame": {"x":532,"y":2,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00019.png",
+	"frame": {"x":426,"y":254,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00020.png",
+	"frame": {"x":426,"y":380,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00021.png",
+	"frame": {"x":532,"y":128,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00022.png",
+	"frame": {"x":638,"y":2,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00023.png",
+	"frame": {"x":532,"y":254,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00024.png",
+	"frame": {"x":532,"y":380,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00025.png",
+	"frame": {"x":638,"y":128,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00026.png",
+	"frame": {"x":744,"y":2,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00027.png",
+	"frame": {"x":638,"y":254,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00028.png",
+	"frame": {"x":638,"y":380,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00029.png",
+	"frame": {"x":744,"y":128,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00030.png",
+	"frame": {"x":850,"y":2,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00031.png",
+	"frame": {"x":744,"y":254,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00032.png",
+	"frame": {"x":744,"y":380,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00033.png",
+	"frame": {"x":850,"y":128,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00034.png",
+	"frame": {"x":956,"y":2,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00035.png",
+	"frame": {"x":850,"y":254,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00036.png",
+	"frame": {"x":850,"y":380,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00037.png",
+	"frame": {"x":956,"y":128,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00038.png",
+	"frame": {"x":1062,"y":2,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00039.png",
+	"frame": {"x":956,"y":254,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00040.png",
+	"frame": {"x":956,"y":380,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00041.png",
+	"frame": {"x":1062,"y":128,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00042.png",
+	"frame": {"x":1168,"y":2,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00043.png",
+	"frame": {"x":1062,"y":254,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00044.png",
+	"frame": {"x":1062,"y":380,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00045.png",
+	"frame": {"x":1168,"y":128,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00046.png",
+	"frame": {"x":1274,"y":2,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00047.png",
+	"frame": {"x":1168,"y":254,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00048.png",
+	"frame": {"x":1168,"y":380,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00049.png",
+	"frame": {"x":1274,"y":128,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00050.png",
+	"frame": {"x":1380,"y":2,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00051.png",
+	"frame": {"x":1486,"y":2,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00052.png",
+	"frame": {"x":1274,"y":254,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00053.png",
+	"frame": {"x":1274,"y":380,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00054.png",
+	"frame": {"x":1380,"y":128,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00055.png",
+	"frame": {"x":1486,"y":128,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00056.png",
+	"frame": {"x":1380,"y":254,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00057.png",
+	"frame": {"x":1486,"y":254,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00058.png",
+	"frame": {"x":1380,"y":380,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "particle_hover_04_00059.png",
+	"frame": {"x":1486,"y":380,"w":104,"h":124},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":124},
+	"sourceSize": {"w":104,"h":124},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "particle_hover.png",
+	"format": "RGBA8888",
+	"size": {"w":1592,"h":506},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:fdb43b995d2f5c0f1ab5114da5d6a00a:9fa210fc330ee4f0e1a4f5a98485b16d:76696883cfd5d3bdb555c58a911f8e07$"
+}
+}
