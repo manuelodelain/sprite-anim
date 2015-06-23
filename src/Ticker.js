@@ -14,11 +14,13 @@ var Ticker = function(){
 
 Ticker.prototype.start = function() {
   this.isRunning = true;
+  
   this.tickId = raf(this.tickCb);
 };
 
 Ticker.prototype.pause = function() {
   this.isRunning = false;
+
   raf.cancel(this.tickId);
 };
 
