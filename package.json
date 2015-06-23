@@ -26,6 +26,16 @@
   "devDependencies": {
     "browserify": "^10.2.3",
     "http-server": "^0.8.0",
+    "browserify-shim": "^3.8.9",
+    "domready": "^1.0.8",
     "watchify": "^3.2.1"
-  }
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim",
+      "brfs"
+    ]
+  },
+  "browserify-shim": {},
+  "browser": {}
 }
