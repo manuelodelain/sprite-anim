@@ -9,6 +9,7 @@
   ],
   "main": "src/SpriteAnim.js",
   "scripts": {
+    "start": "http-server",
     "watch": "watchify src/SpriteAnim.js --standalone SpriteAnim -o dist/sprite-anim.js -dv",
     "build": "browserify src/SpriteAnim.js --standalone SpriteAnim -o dist/sprite-anim.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "browserify": "^10.2.3",
+    "http-server": "^0.8.0",
     "watchify": "^3.2.1"
   }
 }

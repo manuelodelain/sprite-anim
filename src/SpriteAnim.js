@@ -131,6 +131,7 @@ SpriteAnim.prototype.onEnterFrame = function(timeStamp) {
 module.exports = SpriteAnim;
 
 module.exports.CanvasRenderer = require('./renderer/CanvasRenderer.js');
+module.exports.OffScreenCanvasRenderer = require('./renderer/OffScreenCanvasRenderer.js');
 module.exports.DOMRenderer = require('./renderer/DOMRenderer.js');
 
 module.exports.SimpleParser = require('./parser/SimpleParser.js');
