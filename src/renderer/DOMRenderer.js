@@ -1,3 +1,5 @@
+'use strict';
+
 var DOMRenderer = function(element){
   this.element = element;
 };

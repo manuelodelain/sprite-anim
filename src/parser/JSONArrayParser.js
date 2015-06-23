@@ -1,3 +1,5 @@
+'use strict';
+
 var JSONArrayParser = function(data, scaleFactor){
   scaleFactor = scaleFactor || 1;
 

@@ -1,3 +1,5 @@
+'use strict';
+
 var SimpleParser = function(spriteSize, frameSize){
   this.numFrames = 0;
   this.frames = [];

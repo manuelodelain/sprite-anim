@@ -1,3 +1,5 @@
+'use strict';
+
 var CanvasRenderer = function(canvas, sprite){
   this.canvas = canvas;
   this.sprite = sprite;

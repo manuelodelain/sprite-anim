@@ -1,6 +1,10 @@
-var raf = require('raf');
+'use strict';
+
 var EventEmitter = require('events').EventEmitter;
 var inherits = require('util').inherits;
+var Ticker = require('./Ticker');
+
+var ticker = new Ticker();
 
 var SpriteAnim = function(parser, renderer, options) {
   options = options || {};
@@ -23,7 +27,7 @@ var SpriteAnim = function(parser, renderer, options) {
   this.lastFrame = this.numFrames - 1;
 
   this.enterFrameId = -1;
-  this.enterFrame = this.onEnterFrame.bind(this);
+  this.enterFrameCb = this.onEnterFrame.bind(this);
 
   this.currentFrame = 0;
   this.isPlaying = false;
@@ -41,7 +45,7 @@ SpriteAnim.prototype.play = function() {
   this.complete = false;
 
   if(!this.manualUpdate) {
-    this.enterFrameId = raf(this.enterFrame);
+    this.enterFrameId = ticker.add(this.enterFrameCb);
   }
 };
 
@@ -49,7 +53,7 @@ SpriteAnim.prototype.pause = function() {
   this.isPlaying = false;
 
   if(!this.manualUpdate) {
-    raf.cancel(this.enterFrameId);
+    ticker.remove(this.enterFrameId);
   }
 };
 
@@ -107,10 +111,6 @@ SpriteAnim.prototype.onComplete = function() {
 };
 
 SpriteAnim.prototype.onEnterFrame = function(timeStamp) {
-  if(!this.manualUpdate) {
-    this.enterFrameId = raf(this.enterFrame);
-  }
-
   if (timeStamp - this.lastFrameTime > this.interval || this.lastFrameTime === 0) {
     this.lastFrameTime = timeStamp;
 
