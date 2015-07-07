@@ -8,15 +8,14 @@ var OneCanvasRenderer = function(canvas, sprite){
 OneCanvasRenderer.prototype.render = function(frame) {
 
   // this.context.globalAlpha = this.particle.alpha;
-
   this.context.drawImage(
     this.sprite,
     frame.x,
     frame.y,
     frame.width ,
     frame.height,
-    0,
-    0,
+    this.animation.x,
+    this.animation.y,
     frame.width * 1,
     frame.height * 1
    );

@@ -36,6 +36,10 @@ var SpriteAnim = function(parser, renderer, options) {
 
   this.lastFrameTime = 0;
   this.interval = 1000 / this.frameRate;
+
+  this.x = 0;
+  this.y = 0;
+  this.renderer.animation = this;
 };
 
 inherits(SpriteAnim, EventEmitter);

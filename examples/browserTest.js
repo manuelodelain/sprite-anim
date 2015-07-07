@@ -7,35 +7,10 @@ domready(function () {
 
   var body = document.getElementsByTagName("body")[0];
 
+  this.timeStamp = null;
   this.animationData = JSON.parse(fs.readFileSync(__dirname + '/particle_hover.json', 'utf8'));
 
-  this.container = document.createElement("div");
-  this.container.style.position = 'absolute';
-
-  // body.appendChild(this.container);
-
-  this.container.style.width = this.animationData.frames[0].sourceSize.w + 'px';
-  this.container.style.height = this.animationData.frames[0].sourceSize.h + 'px';
-
-  this.renderer = new SpriteAnim.DOMRenderer(this.container);
-  this.parser = new SpriteAnim.JSONArrayParser(this.animationData, 1);
-  this.anim = new SpriteAnim(this.parser, this.renderer, {frameRate: 25, loop: true });
-
-  this.img = new Image();
-  this.img.addEventListener('load', function(){
-    this.container.style.backgroundImage = 'url(' + this.img.src + ')';
-    this.anim.play();
-  }.bind(this));
-
-  this.img.src = './examples/' + this.animationData.meta.image;
-
-
-
-
-
-
   this.canvas = document.createElement("canvas");
-
   this.canvas.style.position = 'absolute';
   this.canvas.style.left = 0;
   this.canvas.style.top = 0;
@@ -45,39 +20,33 @@ domready(function () {
   this.canvas.style.height = window.innerHeight + 'px';
   this.canvas.setAttribute('width', window.innerWidth + 'px');
   this.canvas.setAttribute('height', window.innerHeight + 'px');
+  body.appendChild(this.canvas);
 
   this.context = this.canvas.getContext('2d');
 
-  body.appendChild(this.canvas);
+  this.img = new Image();
+  this.img.addEventListener('load', function(){
 
-
-
-
-
-
-  this.img2 = new Image();
-  this.img2.addEventListener('load', function(){
-
-    this.oneCanvasRenderer = new SpriteAnim.OneCanvasRenderer(this.canvas, this.img2);
-    this.parser2 = new SpriteAnim.JSONArrayParser(this.animationData, 1);
-    this.anim2 = new SpriteAnim(this.parser2, this.oneCanvasRenderer, { frameRate: 25, loop: true, manualUpdate: true });
-    this.anim2.play();
+    this.oneCanvasRenderer = new SpriteAnim.OneCanvasRenderer(this.canvas, this.img);
+    //El ,1 es el scale factor
+    this.parser = new SpriteAnim.JSONArrayParser(this.animationData, 1);
+    this.anim = new SpriteAnim(this.parser, this.oneCanvasRenderer, { frameRate: 60, loop: true, manualUpdate: true });
+    this.anim.play();
   }.bind(this));
 
-  this.img2.src = './examples/' + this.animationData.meta.image;
-
-
+  this.img.src = './examples/' + this.animationData.meta.image;
 
 
 
   this.onEnterFrame = function() {
-    if(this.anim2) {
-      this.anim2.enterFrame();
-    }
-
     raf(this.enterFrame);
+    if(this.anim) {
+      this.timeStamp = new Date().getTime();
+      this.anim.onEnterFrame(this.timeStamp);
+    }
   }
 
   this.enterFrame = this.onEnterFrame.bind(this);
-  this.enterFrame();
-})
+  raf(this.enterFrame);
+
+});

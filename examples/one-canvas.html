@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Sprite anim - canvas</title>
+  <style>
+    #anim{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 470px;
+      height: 120px;
+      margin-top: -60px;
+      margin-left: -235px;
+    }
+
+    #source{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding-bottom: 20px;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 12px;
+      text-align: center;
+      color: #ccc;
+    }
+
+    #source a{
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="anim" width="940" height="240"></canvas>
+  <div id="source">Animated typeface from Animography <a href="http://animography.net/products/franchise">http://animography.net/products/franchise</a></div>
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script>-->
+  <script src="../dist/sprite-anim.js"></script>
+  <script>
+    var img = new Image();
+    var anim;
+    var rafId;
+    var canvas = document.getElementById('anim');
+    var context = canvas.getContext('2d');
+
+    img.addEventListener('load', function(){
+      var renderer = new SpriteAnim.OneCanvasRenderer(canvas, img);
+      var parser = new SpriteAnim.SimpleParser({width: 2820, height: 7920}, {width: 940, height: 240});
+
+      anim = new SpriteAnim(parser, renderer, {manualUpdate: true, loop: true});
+      anim.on('complete', onAnimComplete);
+      anim.play();
+      rafId = requestAnimationFrame(render);
+    });
+
+    function render(timeStamp){
+      context.clearRect(0, 0, 940, 240);
+
+      rafId = requestAnimationFrame(render);
+
+      anim.onEnterFrame(timeStamp);
+
+      //@TODO I'm forced to call renderFrame because the clearRect at the top.
+      // I'm not sure how can we solve this.
+      anim.renderFrame();
+    }
+
+    function onAnimComplete(){
+      // cancelAnimationFrame(rafId);
+    }
+
+    img.src = 'images/anim.png';
+  </script>
+</body>
+</html>
