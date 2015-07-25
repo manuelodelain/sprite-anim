@@ -5,7 +5,10 @@
   "keywords": [
     "spritesheet",
     "sprites",
-    "animation"
+    "animation",
+    "animations",
+    "sprite",
+    "texture packer"
   ],
   "main": "src/SpriteAnim.js",
   "scripts": {
