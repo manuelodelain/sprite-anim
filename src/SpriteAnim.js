@@ -39,6 +39,8 @@ var SpriteAnim = function(parser, renderer, options) {
 
   this.x = 0;
   this.y = 0;
+
+  this.alpha = 1;
 };
 
 inherits(SpriteAnim, EventEmitter);
@@ -131,7 +133,7 @@ SpriteAnim.prototype.onEnterFrame = function(timeStamp) {
   }
 };
 
-module.exports = SpriteAnim; 
+module.exports = SpriteAnim;
 
 module.exports.CanvasRenderer = require('./renderer/CanvasRenderer.js');
 module.exports.OffScreenCanvasRenderer = require('./renderer/OffScreenCanvasRenderer.js');
