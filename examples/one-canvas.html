@@ -45,7 +45,7 @@
     var context = canvas.getContext('2d');
 
     img.addEventListener('load', function(){
-      var renderer = new SpriteAnim.OneCanvasRenderer(canvas, img);
+      var renderer = new SpriteAnim.CanvasRenderer(canvas, img, {clearFrame: false});
       var parser = new SpriteAnim.SimpleParser({width: 2820, height: 7920}, {width: 940, height: 240});
 
       anim = new SpriteAnim(parser, renderer, {manualUpdate: true, loop: true});
@@ -55,15 +55,16 @@
     });
 
     function render(timeStamp){
-      context.clearRect(0, 0, 940, 240);
-
       rafId = requestAnimationFrame(render);
+
+      context.clearRect(0, 0, 940, 240);
 
       anim.onEnterFrame(timeStamp);
 
       //@TODO I'm forced to call renderFrame because the clearRect at the top.
       // I'm not sure how can we solve this.
       anim.renderFrame();
+      
     }
 
     function onAnimComplete(){

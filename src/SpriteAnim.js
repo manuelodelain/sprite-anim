@@ -21,7 +21,7 @@ var SpriteAnim = function(parser, renderer, options) {
   };
 
   for (var optionName in defaultOptions){
-    this[optionName] = options[optionName] || defaultOptions[optionName];
+    this[optionName] = typeof options[optionName] !== 'undefined' ? options[optionName] : defaultOptions[optionName];
   }
 
   this.lastFrame = this.numFrames - 1;
@@ -131,9 +131,8 @@ SpriteAnim.prototype.onEnterFrame = function(timeStamp) {
   }
 };
 
-module.exports = SpriteAnim;
+module.exports = SpriteAnim; 
 
-module.exports.OneCanvasRenderer = require('./renderer/OneCanvasRenderer.js');
 module.exports.CanvasRenderer = require('./renderer/CanvasRenderer.js');
 module.exports.OffScreenCanvasRenderer = require('./renderer/OffScreenCanvasRenderer.js');
 module.exports.DOMRenderer = require('./renderer/DOMRenderer.js');
