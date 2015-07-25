@@ -39,7 +39,6 @@ var SpriteAnim = function(parser, renderer, options) {
 
   this.x = 0;
   this.y = 0;
-  this.renderer.animation = this;
 };
 
 inherits(SpriteAnim, EventEmitter);
@@ -93,7 +92,7 @@ SpriteAnim.prototype.prevFrame = function() {
 };
 
 SpriteAnim.prototype.renderFrame = function() {
-  this.renderer.render(this.parser.frames[this.currentFrame]);
+  this.renderer.render(this.parser.frames[this.currentFrame], this);
 };
 
 SpriteAnim.prototype.dispose = function() {

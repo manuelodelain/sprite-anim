@@ -7,7 +7,7 @@ var OneCanvasRenderer = function(canvas, sprite){
   this.context = canvas.getContext('2d');
 };
 
-OneCanvasRenderer.prototype.render = function(frame) {
+OneCanvasRenderer.prototype.render = function(frame, animation) {
 
   // this.context.globalAlpha = this.particle.alpha;
   this.context.drawImage(
@@ -16,8 +16,8 @@ OneCanvasRenderer.prototype.render = function(frame) {
     frame.y,
     frame.width ,
     frame.height,
-    this.animation.x,
-    this.animation.y,
+    animation.x,
+    animation.y,
     frame.width * 1,
     frame.height * 1
    );
