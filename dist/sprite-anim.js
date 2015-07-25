@@ -1128,189 +1128,6 @@ module.exports.cancel = function() {
 },{"_process":3}],8:[function(require,module,exports){
 'use strict';
 
-var raf = require('raf');
-
-var callbackId = 0;
-
-var Ticker = function(){
-  this.items = [];
-
-  this.isRunning = false;
-  this.tickId = -1;
-  this.tickCb = this.onTick.bind(this);
-};
-
-Ticker.prototype.start = function() {
-  this.isRunning = true;
-  
-  this.tickId = raf(this.tickCb);
-};
-
-Ticker.prototype.pause = function() {
-  this.isRunning = false;
-
-  raf.cancel(this.tickId);
-};
-
-Ticker.prototype.add = function(callback) {
-  var id = callbackId++;
-
-  this.items.push({
-    id: id,
-    cb: callback
-  });
-
-  if (!this.isRunning) this.start();
-
-  return id;
-};
-
-Ticker.prototype.remove = function(id) {
-  var item;
-
-  for (var i = 0, n = this.items.length; i < n; i++){
-    if (this.items[i].id === id){
-      item = this.items.splice(i, 1)[0];
-    }
-  }
-
-  if (this.items.length === 0) this.pause();
-
-  return item;
-};
-
-Ticker.prototype.onTick = function(timeStamp) {
-  this.tickId = raf(this.tickCb);
-
-  for (var i = 0, n = this.items.length; i < n; i++){
-    this.items[i].cb(timeStamp);
-  }
-};
-
-module.exports = Ticker;
-
-
-},{"raf":6}],9:[function(require,module,exports){
-'use strict';
-
-var JSONArrayParser = function(data, scaleFactor){
-  scaleFactor = scaleFactor || 1;
-
-  this.frames = [];
-  this.numFrames = data.frames.length;
-
-  var frame;
-
-  for (var i = 0; i < this.numFrames; i++){
-    frame = data.frames[i].frame;
-
-    this.frames.push({
-      index: i,
-      x: frame.x * scaleFactor,
-      y: frame.y * scaleFactor,
-      width: frame.w * scaleFactor,
-      height: frame.h * scaleFactor
-    });
-  }
-};
-
-module.exports = JSONArrayParser;
-},{}],10:[function(require,module,exports){
-'use strict';
-
-var SimpleParser = function(spriteSize, frameSize){
-  this.numFrames = 0;
-  this.frames = [];
-
-  var numFramesX = Math.ceil(spriteSize.width / frameSize.width);
-  var numFramesY = Math.ceil(spriteSize.height / frameSize.height);
-
-  for (var i = 0; i < numFramesY; i++) {
-    for (var j = 0; j < numFramesX; j++) {
-      this.frames.push({
-        x: j * frameSize.width,
-        y: i * frameSize.height,
-        index: this.numFrames,
-        width: frameSize.width,
-        height: frameSize.height
-      });
-
-      this.numFrames++;
-    }
-  }
-};
-
-module.exports = SimpleParser;
-},{}],11:[function(require,module,exports){
-'use strict';
-
-var CanvasRenderer = function(canvas, sprite){
-  this.canvas = canvas;
-  this.sprite = sprite;
-  
-  this.context = canvas.getContext('2d');
-};
-
-CanvasRenderer.prototype.render = function(frame) {
-  this.context.clearRect(0, 0, frame.width, frame.height);
-  
-  this.context.drawImage(
-    this.sprite,
-    frame.x,
-    frame.y,
-    frame.width,
-    frame.height,
-    0,
-    0,
-    frame.width,
-    frame.height
-   );
-};
-
-module.exports = CanvasRenderer;
-},{}],12:[function(require,module,exports){
-'use strict';
-
-var DOMRenderer = function(element){
-  this.element = element;
-};
-
-DOMRenderer.prototype.render = function(frame) {
-  this.element.style.backgroundPosition = '-' + frame.x + 'px -' + frame.y + 'px';
-};
-
-module.exports = DOMRenderer;
-},{}],13:[function(require,module,exports){
-'use strict';
-
-var OffScreenCanvasRenderer = function(canvas, sprite){
-  this.canvas = canvas;
-  this.sprite = sprite;
-  
-  this.buffer = document.createElement('canvas');
-  this.buffer.width = sprite.width;
-  this.buffer.height = sprite.height;
-
-  this.bufferContext = this.buffer.getContext('2d');
-  this.bufferContext.drawImage(sprite, 0, 0);
-
-  this.context = canvas.getContext('2d');
-};
-
-OffScreenCanvasRenderer.prototype.render = function(frame) {
-  this.context.clearRect(0, 0, frame.width, frame.height);
-  
-  this.context.putImageData(
-    this.bufferContext.getImageData(frame.x,frame.y,frame.width,frame.height),
-    0,
-    0
-   );
-};
-
-module.exports = OffScreenCanvasRenderer;
-},{}],14:[function(require,module,exports){
-'use strict';
-
 var EventEmitter = require('events').EventEmitter;
 var inherits = require('util').inherits;
 var Ticker = require('./Ticker');
@@ -1347,6 +1164,10 @@ var SpriteAnim = function(parser, renderer, options) {
 
   this.lastFrameTime = 0;
   this.interval = 1000 / this.frameRate;
+
+  this.x = 0;
+  this.y = 0;
+  this.renderer.animation = this;
 };
 
 inherits(SpriteAnim, EventEmitter);
@@ -1441,6 +1262,7 @@ SpriteAnim.prototype.onEnterFrame = function(timeStamp) {
 
 module.exports = SpriteAnim;
 
+module.exports.OneCanvasRenderer = require('./renderer/OneCanvasRenderer.js');
 module.exports.CanvasRenderer = require('./renderer/CanvasRenderer.js');
 module.exports.OffScreenCanvasRenderer = require('./renderer/OffScreenCanvasRenderer.js');
 module.exports.DOMRenderer = require('./renderer/DOMRenderer.js');
@@ -1448,6 +1270,215 @@ module.exports.DOMRenderer = require('./renderer/DOMRenderer.js');
 module.exports.SimpleParser = require('./parser/SimpleParser.js');
 module.exports.JSONArrayParser = require('./parser/JSONArrayParser.js');
 
+},{"./Ticker":9,"./parser/JSONArrayParser.js":10,"./parser/SimpleParser.js":11,"./renderer/CanvasRenderer.js":12,"./renderer/DOMRenderer.js":13,"./renderer/OffScreenCanvasRenderer.js":14,"./renderer/OneCanvasRenderer.js":15,"events":1,"util":5}],9:[function(require,module,exports){
+'use strict';
 
-},{"./Ticker":8,"./parser/JSONArrayParser.js":9,"./parser/SimpleParser.js":10,"./renderer/CanvasRenderer.js":11,"./renderer/DOMRenderer.js":12,"./renderer/OffScreenCanvasRenderer.js":13,"events":1,"util":5}]},{},[14])(14)
+var raf = require('raf');
+
+var callbackId = 0;
+
+var Ticker = function(){
+  this.items = [];
+
+  this.isRunning = false;
+  this.tickId = -1;
+  this.tickCb = this.onTick.bind(this);
+};
+
+Ticker.prototype.start = function() {
+  this.isRunning = true;
+  
+  this.tickId = raf(this.tickCb);
+};
+
+Ticker.prototype.pause = function() {
+  this.isRunning = false;
+
+  raf.cancel(this.tickId);
+};
+
+Ticker.prototype.add = function(callback) {
+  var id = callbackId++;
+
+  this.items.push({
+    id: id,
+    cb: callback
+  });
+
+  if (!this.isRunning) this.start();
+
+  return id;
+};
+
+Ticker.prototype.remove = function(id) {
+  var item;
+
+  for (var i = 0, n = this.items.length; i < n; i++){
+    if (this.items[i].id === id){
+      item = this.items.splice(i, 1)[0];
+    }
+  }
+
+  if (this.items.length === 0) this.pause();
+
+  return item;
+};
+
+Ticker.prototype.onTick = function(timeStamp) {
+  this.tickId = raf(this.tickCb);
+
+  for (var i = 0, n = this.items.length; i < n; i++){
+    this.items[i].cb(timeStamp);
+  }
+};
+
+module.exports = Ticker;
+
+
+},{"raf":6}],10:[function(require,module,exports){
+'use strict';
+
+var JSONArrayParser = function(data, scaleFactor){
+  scaleFactor = scaleFactor || 1;
+
+  this.frames = [];
+  this.numFrames = data.frames.length;
+
+  var frame;
+
+  for (var i = 0; i < this.numFrames; i++){
+    frame = data.frames[i].frame;
+
+    this.frames.push({
+      index: i,
+      x: frame.x * scaleFactor,
+      y: frame.y * scaleFactor,
+      width: frame.w * scaleFactor,
+      height: frame.h * scaleFactor
+    });
+  }
+};
+
+module.exports = JSONArrayParser;
+},{}],11:[function(require,module,exports){
+'use strict';
+
+var SimpleParser = function(spriteSize, frameSize){
+  this.numFrames = 0;
+  this.frames = [];
+
+  var numFramesX = Math.ceil(spriteSize.width / frameSize.width);
+  var numFramesY = Math.ceil(spriteSize.height / frameSize.height);
+
+  for (var i = 0; i < numFramesY; i++) {
+    for (var j = 0; j < numFramesX; j++) {
+      this.frames.push({
+        x: j * frameSize.width,
+        y: i * frameSize.height,
+        index: this.numFrames,
+        width: frameSize.width,
+        height: frameSize.height
+      });
+
+      this.numFrames++;
+    }
+  }
+};
+
+module.exports = SimpleParser;
+},{}],12:[function(require,module,exports){
+'use strict';
+
+var CanvasRenderer = function(canvas, sprite){
+  this.canvas = canvas;
+  this.sprite = sprite;
+  
+  this.context = canvas.getContext('2d');
+};
+
+CanvasRenderer.prototype.render = function(frame) {
+  this.context.clearRect(0, 0, frame.width, frame.height);
+  
+  this.context.drawImage(
+    this.sprite,
+    frame.x,
+    frame.y,
+    frame.width,
+    frame.height,
+    0,
+    0,
+    frame.width,
+    frame.height
+   );
+};
+
+module.exports = CanvasRenderer;
+},{}],13:[function(require,module,exports){
+'use strict';
+
+var DOMRenderer = function(element){
+  this.element = element;
+};
+
+DOMRenderer.prototype.render = function(frame) {
+  this.element.style.backgroundPosition = '-' + frame.x + 'px -' + frame.y + 'px';
+};
+
+module.exports = DOMRenderer;
+},{}],14:[function(require,module,exports){
+'use strict';
+
+var OffScreenCanvasRenderer = function(canvas, sprite){
+  this.canvas = canvas;
+  this.sprite = sprite;
+  
+  this.buffer = document.createElement('canvas');
+  this.buffer.width = sprite.width;
+  this.buffer.height = sprite.height;
+
+  this.bufferContext = this.buffer.getContext('2d');
+  this.bufferContext.drawImage(sprite, 0, 0);
+
+  this.context = canvas.getContext('2d');
+};
+
+OffScreenCanvasRenderer.prototype.render = function(frame) {
+  this.context.clearRect(0, 0, frame.width, frame.height);
+  
+  this.context.putImageData(
+    this.bufferContext.getImageData(frame.x,frame.y,frame.width,frame.height),
+    0,
+    0
+   );
+};
+
+module.exports = OffScreenCanvasRenderer;
+},{}],15:[function(require,module,exports){
+var OneCanvasRenderer = function(canvas, sprite){
+  this.canvas = canvas;
+  this.sprite = sprite;
+
+  this.context = canvas.getContext('2d');
+};
+
+OneCanvasRenderer.prototype.render = function(frame) {
+
+  // this.context.globalAlpha = this.particle.alpha;
+  this.context.drawImage(
+    this.sprite,
+    frame.x,
+    frame.y,
+    frame.width ,
+    frame.height,
+    this.animation.x,
+    this.animation.y,
+    frame.width * 1,
+    frame.height * 1
+   );
+
+};
+
+module.exports = OneCanvasRenderer;
+
+},{}]},{},[8])(8)
 });
