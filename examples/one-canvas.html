@@ -51,6 +51,7 @@
       anim = new SpriteAnim(parser, renderer, {manualUpdate: true, loop: true});
       anim.on('complete', onAnimComplete);
       anim.play();
+      anim.alpha = 0.5;
       rafId = requestAnimationFrame(render);
     });
 
@@ -64,7 +65,7 @@
       //@TODO I'm forced to call renderFrame because the clearRect at the top.
       // I'm not sure how can we solve this.
       anim.renderFrame();
-      
+
     }
 
     function onAnimComplete(){

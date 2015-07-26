@@ -140,12 +140,21 @@ If `true` loop animation (default: `false`)
 If `true` repeat from end when looping (default: `false`)
 - `numFrames` (`Boolean`)
 Force total frames
-- `manualUpdate` (`Boolean`) 
+- `manualUpdate` (`Boolean`)
 If `true` the animation will not update itself. (default: `false`)
 You'll have to update it manually with an explicit `onEnterFrame()` call on a custom render loop.
 
 
 #### properties
+
+##### `x` (`Number`)
+Horizontal position from the top left corner of the container. (default: 0)
+
+##### `y` (`Number`)
+Vertical position from the top left corner of the container. (default: 0)
+
+##### `alpha` (`Number`)
+Alpha value of the animation. A value between 0 and 1. Currently only supported on canvas mode. (default: 1)
 
 ##### `loop` (`Boolean`)
 If `true` loop animation (default: `false`)
@@ -155,7 +164,7 @@ If `true` repeat from end when looping (default: `false`)
 
 
 ##### `frameRate` (`Number`)
-Animation frame rate 
+Animation frame rate
 
 ##### `numFrames` (`Number`)
 Total frames
@@ -202,5 +211,3 @@ Dispatched when animation ended
 
 ##### `enterFrame`
 Dispatched on each frame
-
-
