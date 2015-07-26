@@ -108,11 +108,14 @@ Render frame with a `canvas` element (`drawImage`).
 ##### Params
 - `canvas`: canvas element
 - `sprite`: `Image` spritesheet image
+- `options` (`Object`): 
+  - `clearFrame` (`Boolean`): clear frame on render
 
 #### Custom renderer
 You can implement your own renderer.
 
 A renderer must have a `render` method with a parameter `frame`.
+There is an optionnal parameter `animation` which is the `SpriteAnim` instance.
 The `frame` param is an `object` with properties `{x, y, index, width, height}`.
 
 ##### Example
@@ -120,7 +123,7 @@ The `frame` param is an `object` with properties `{x, y, index, width, height}`.
 var CustomRenderer = function(){
 };
 
-CustomRenderer.prototype.render = function(frame){
+CustomRenderer.prototype.render = function(frame, animation){
   // draw the frame
 };
 ```
@@ -199,6 +202,9 @@ Go to a frame index and pause animation
 ##### `onEnterFrame(timeStamp)`
 Called internally each frame.
 If you add the `manualUpdate` option and call this method directly in a external render loop you have to pass a `timeStamp` argument (from the requestAnimationFrame callback).
+
+##### `renderFrame()`
+Render the current frame
 
 ##### `dispose()`
 Dispose SpriteAnim instance
