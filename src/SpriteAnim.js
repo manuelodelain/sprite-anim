@@ -119,7 +119,7 @@ SpriteAnim.prototype.onEnterFrame = function(timeStamp) {
   if (timeStamp - this.lastFrameTime > this.interval || this.lastFrameTime === 0) {
     this.lastFrameTime = timeStamp;
 
-    this.renderFrame();
+    if (!this.manualUpdate) this.renderFrame();
 
     if (this.complete) {
       this.onComplete();
