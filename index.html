@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Sprite-anim by manuelodelain</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Sprite-anim</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/manuelodelain/sprite-anim" class="btn">View on GitHub</a>
+      <a href="https://github.com/manuelodelain/sprite-anim/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/manuelodelain/sprite-anim/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="sprite-anim" class="anchor" href="#sprite-anim" aria-hidden="true"><span class="octicon octicon-link"></span></a>sprite-anim</h1>
+
+<p>sprite-anim is a simple spritesheet animation engine.</p>
+
+<h3>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h3>
+
+<p><code>npm install sprite-anim --save</code></p>
+
+<h3>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h3>
+
+<ul>
+<li>common API (play / pause / stop / gotoAndPlay / gotoAndStop / dispose)</li>
+<li>initialize frames with data (JSONArrayParser), automatically with dimensions (SimpleParser) or your own custom parser</li>
+<li>works with DOM elements (DOMRenderer), canvas element (CanvasRenderer), off-screen canvas (OffScreenCanvasRenderer) or your own custom renderer</li>
+</ul>
+
+<h3>
+<a id="browser-compatibility" class="anchor" href="#browser-compatibility" aria-hidden="true"><span class="octicon octicon-link"></span></a>Browser compatibility</h3>
+
+<p>IE 6+ with DOM element, IE 9+ with DOM and canvas element.
+If you need to support IE 8- use <a href="https://github.com/es-shims/es5-shim">es5-shim</a> for EcmaScript 5 methods compatibility.</p>
+
+<h2>
+<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation</h2>
+
+<h3>
+<a id="use" class="anchor" href="#use" aria-hidden="true"><span class="octicon octicon-link"></span></a>Use</h3>
+
+<h4>
+<a id="browserify" class="anchor" href="#browserify" aria-hidden="true"><span class="octicon octicon-link"></span></a>Browserify</h4>
+
+<pre><code>var SpriteAnim = require('sprite-anim');
+</code></pre>
+
+<h4>
+<a id="amd" class="anchor" href="#amd" aria-hidden="true"><span class="octicon octicon-link"></span></a>AMD</h4>
+
+<pre><code>require(['sprite-anim.js'], function(SpriteAnim){
+});
+</code></pre>
+
+<h4>
+<a id="script-tag" class="anchor" href="#script-tag" aria-hidden="true"><span class="octicon octicon-link"></span></a>Script tag</h4>
+
+<pre><code>&lt;script src="path/to/file/sprite-anim.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  // global variable SpriteAnim
+&lt;/script&gt;
+</code></pre>
+
+<h3>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h3>
+
+<h4>
+<a id="dom-element-with-spritesheet-and-frame-dimensions" class="anchor" href="#dom-element-with-spritesheet-and-frame-dimensions" aria-hidden="true"><span class="octicon octicon-link"></span></a>DOM element with spritesheet and frame dimensions</h4>
+
+<pre><code>var animElt = document.getElementById('anim');
+var renderer = new SpriteAnim.DOMRenderer(animElt);
+var parser = new SpriteAnim.SimpleParser({width: 1410, height: 3960}, {width: 470, height: 120});
+var anim = new SpriteAnim(parser, renderer, {frameRate: 25});
+
+anim.play();
+</code></pre>
+
+<h4>
+<a id="canvas-element-with-frames-data" class="anchor" href="#canvas-element-with-frames-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Canvas element with frames data</h4>
+
+<pre><code>var animElt = document.getElementById('anim');
+var renderer = new SpriteAnim.CanvasRenderer(animElt);
+var parser = new SpriteAnim.JSONArrayParser(framesData);
+var anim = new SpriteAnim(parser, renderer, {frameRate: 25});
+
+anim.play();
+</code></pre>
+
+<h3>
+<a id="parsers" class="anchor" href="#parsers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parsers</h3>
+
+<h4>
+<a id="simpleparser" class="anchor" href="#simpleparser" aria-hidden="true"><span class="octicon octicon-link"></span></a>SimpleParser</h4>
+
+<p>Initialize frames directly with spritesheet image dimensions and frame dimensions.</p>
+
+<h5>
+<a id="params" class="anchor" href="#params" aria-hidden="true"><span class="octicon octicon-link"></span></a>Params</h5>
+
+<ul>
+<li>
+<code>spriteSize</code>: <code>Object</code> <code>{width: Number, height: Number}</code>
+</li>
+<li>
+<code>frameSize</code>: <code>Object</code> <code>{width: Number, height: Number}</code>
+</li>
+</ul>
+
+<h4>
+<a id="jsonarrayparser" class="anchor" href="#jsonarrayparser" aria-hidden="true"><span class="octicon octicon-link"></span></a>JSONArrayParser</h4>
+
+<p>Initialize frames with an <code>Array</code> of frames data, following the TexturePacker JSONArray output.</p>
+
+<h5>
+<a id="params-1" class="anchor" href="#params-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Params</h5>
+
+<ul>
+<li>
+<code>data</code>: <code>Object</code>
+</li>
+<li>
+<code>scaleFactor</code> (optional): <code>Number</code>
+</li>
+</ul>
+
+<h4>
+<a id="custom-parser" class="anchor" href="#custom-parser" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom parser</h4>
+
+<p>You can implement your own parser.</p>
+
+<p>A parser must have these properties :</p>
+
+<ul>
+<li>
+<code>numFrames</code>: number of frames</li>
+<li>
+<code>frames</code>: an array of frames <code>{x, y, index, width, height}</code>
+</li>
+</ul>
+
+<h5>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h5>
+
+<pre><code>var CustomParser = function(framesData){
+  this.numFrames = 0;
+  this.frames = [];
+
+  // populate frames and increment numFrames
+};
+</code></pre>
+
+<h3>
+<a id="renderers" class="anchor" href="#renderers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Renderers</h3>
+
+<h4>
+<a id="domrenderer" class="anchor" href="#domrenderer" aria-hidden="true"><span class="octicon octicon-link"></span></a>DOMRenderer</h4>
+
+<p>Render frame with a DOM element (<code>background-position</code>).</p>
+
+<h5>
+<a id="params-2" class="anchor" href="#params-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Params</h5>
+
+<ul>
+<li>
+<code>element</code>: DOM element</li>
+</ul>
+
+<h4>
+<a id="canvasrenderer" class="anchor" href="#canvasrenderer" aria-hidden="true"><span class="octicon octicon-link"></span></a>CanvasRenderer</h4>
+
+<p>Render frame with a <code>canvas</code> element (<code>drawImage</code>).</p>
+
+<h5>
+<a id="params-3" class="anchor" href="#params-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Params</h5>
+
+<ul>
+<li>
+<code>canvas</code>: canvas element</li>
+<li>
+<code>sprite</code>: <code>Image</code> spritesheet image</li>
+<li>
+<code>options</code> (<code>Object</code>): 
+
+<ul>
+<li>
+<code>clearFrame</code> (<code>Boolean</code>): clear frame on render</li>
+</ul>
+</li>
+</ul>
+
+<h4>
+<a id="custom-renderer" class="anchor" href="#custom-renderer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom renderer</h4>
+
+<p>You can implement your own renderer.</p>
+
+<p>A renderer must have a <code>render</code> method with a parameter <code>frame</code>.
+There is an optionnal parameter <code>animation</code> which is the <code>SpriteAnim</code> instance.
+The <code>frame</code> param is an <code>object</code> with properties <code>{x, y, index, width, height}</code>.</p>
+
+<h5>
+<a id="example-1" class="anchor" href="#example-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h5>
+
+<pre><code>var CustomRenderer = function(){
+};
+
+CustomRenderer.prototype.render = function(frame, animation){
+  // draw the frame
+};
+</code></pre>
+
+<h3>
+<a id="spriteanim" class="anchor" href="#spriteanim" aria-hidden="true"><span class="octicon octicon-link"></span></a>SpriteAnim</h3>
+
+<h4>
+<a id="create-instance" class="anchor" href="#create-instance" aria-hidden="true"><span class="octicon octicon-link"></span></a>create instance</h4>
+
+<p><code>new SpriteAnim(parser, renderer, options)</code></p>
+
+<h5>
+<a id="options-object" class="anchor" href="#options-object" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>options</code> (<code>Object</code>)</h5>
+
+<ul>
+<li>
+<code>frameRate</code> (<code>Number</code>)
+Animation frame rate (default: <code>60</code>)</li>
+<li>
+<code>loop</code> (<code>Boolean</code>)
+If <code>true</code> loop animation (default: <code>false</code>)</li>
+<li>
+<code>yoyo</code> (<code>Boolean</code>)
+If <code>true</code> repeat from end when looping (default: <code>false</code>)</li>
+<li>
+<code>numFrames</code> (<code>Boolean</code>)
+Force total frames</li>
+<li>
+<code>manualUpdate</code> (<code>Boolean</code>)
+If <code>true</code> the animation will not update itself. (default: <code>false</code>)
+You'll have to update it manually with an explicit <code>onEnterFrame()</code> call on a custom render loop.</li>
+</ul>
+
+<h4>
+<a id="properties" class="anchor" href="#properties" aria-hidden="true"><span class="octicon octicon-link"></span></a>properties</h4>
+
+<h5>
+<a id="x-number" class="anchor" href="#x-number" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>x</code> (<code>Number</code>)</h5>
+
+<p>Horizontal position from the top left corner of the container. (default: 0)</p>
+
+<h5>
+<a id="y-number" class="anchor" href="#y-number" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>y</code> (<code>Number</code>)</h5>
+
+<p>Vertical position from the top left corner of the container. (default: 0)</p>
+
+<h5>
+<a id="alpha-number" class="anchor" href="#alpha-number" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>alpha</code> (<code>Number</code>)</h5>
+
+<p>Alpha value of the animation. A value between 0 and 1. Currently only supported on canvas mode. (default: 1)</p>
+
+<h5>
+<a id="loop-boolean" class="anchor" href="#loop-boolean" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>loop</code> (<code>Boolean</code>)</h5>
+
+<p>If <code>true</code> loop animation (default: <code>false</code>)</p>
+
+<h5>
+<a id="yoyo-boolean" class="anchor" href="#yoyo-boolean" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>yoyo</code> (<code>Boolean</code>)</h5>
+
+<p>If <code>true</code> repeat from end when looping (default: <code>false</code>)</p>
+
+<h5>
+<a id="framerate-number" class="anchor" href="#framerate-number" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>frameRate</code> (<code>Number</code>)</h5>
+
+<p>Animation frame rate</p>
+
+<h5>
+<a id="numframes-number" class="anchor" href="#numframes-number" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>numFrames</code> (<code>Number</code>)</h5>
+
+<p>Total frames</p>
+
+<h5>
+<a id="currentframe-number" class="anchor" href="#currentframe-number" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>currentFrame</code> (<code>Number</code>)</h5>
+
+<p>Current frame index</p>
+
+<h5>
+<a id="isplaying-boolean" class="anchor" href="#isplaying-boolean" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>isPlaying</code> (<code>Boolean</code>)</h5>
+
+<p><code>true</code> if animation currently playing</p>
+
+<h5>
+<a id="complete-boolean" class="anchor" href="#complete-boolean" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>complete</code> (<code>Boolean</code>)</h5>
+
+<p><code>true</code> if animation complete</p>
+
+<h4>
+<a id="methods" class="anchor" href="#methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>methods</h4>
+
+<h5>
+<a id="play" class="anchor" href="#play" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>play()</code>
+</h5>
+
+<p>Play animation</p>
+
+<h5>
+<a id="pause" class="anchor" href="#pause" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>pause()</code>
+</h5>
+
+<p>Pause animation</p>
+
+<h5>
+<a id="stop" class="anchor" href="#stop" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>stop()</code>
+</h5>
+
+<p>Pause and reset animation (frame index = 0)</p>
+
+<h5>
+<a id="gotoandplayframeindex" class="anchor" href="#gotoandplayframeindex" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>gotoAndPlay(frameIndex)</code>
+</h5>
+
+<p>Go to a frame index and play animation</p>
+
+<h5>
+<a id="gotoandstopframeindex" class="anchor" href="#gotoandstopframeindex" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>gotoAndStop(frameIndex)</code>
+</h5>
+
+<p>Go to a frame index and pause animation</p>
+
+<h5>
+<a id="onenterframetimestamp" class="anchor" href="#onenterframetimestamp" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>onEnterFrame(timeStamp)</code>
+</h5>
+
+<p>Called internally each frame.
+If you add the <code>manualUpdate</code> option and call this method directly in a external render loop you have to pass a <code>timeStamp</code> argument (from the requestAnimationFrame callback).</p>
+
+<h5>
+<a id="renderframe" class="anchor" href="#renderframe" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>renderFrame()</code>
+</h5>
+
+<p>Render the current frame</p>
+
+<h5>
+<a id="dispose" class="anchor" href="#dispose" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>dispose()</code>
+</h5>
+
+<p>Dispose SpriteAnim instance</p>
+
+<h4>
+<a id="events" class="anchor" href="#events" aria-hidden="true"><span class="octicon octicon-link"></span></a>events</h4>
+
+<h5>
+<a id="complete" class="anchor" href="#complete" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>complete</code>
+</h5>
+
+<p>Dispatched when animation ended</p>
+
+<h5>
+<a id="enterframe" class="anchor" href="#enterframe" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>enterFrame</code>
+</h5>
+
+<p>Dispatched on each frame</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/manuelodelain/sprite-anim">Sprite-anim</a> is maintained by <a href="https://github.com/manuelodelain">manuelodelain</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
