@@ -490,7 +490,7 @@ module.exports = OffScreenCanvasRenderer;
 },{}],12:[function(require,module,exports){
 'use strict';
 
-var EventEmitter = require('tiny-emitter');
+var TinyEmitter = require('tiny-emitter');
 var inherits = require('inherits');
 var Ticker = require('./Ticker');
 
@@ -533,7 +533,7 @@ var SpriteAnim = function(parser, renderer, options) {
   this.alpha = 1;
 };
 
-inherits(SpriteAnim, EventEmitter);
+inherits(SpriteAnim, TinyEmitter);
 
 SpriteAnim.prototype.play = function() {
   this.isPlaying = true;

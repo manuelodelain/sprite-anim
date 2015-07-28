@@ -13,8 +13,10 @@
   "main": "src/SpriteAnim.js",
   "scripts": {
     "start": "http-server",
-    "watch": "watchify src/SpriteAnim.js --standalone SpriteAnim -o dist/sprite-anim.js -dv",
-    "build": "browserify src/SpriteAnim.js --standalone SpriteAnim -o dist/sprite-anim.js",
+    "watch": "watchify src/SpriteAnim.js --s SpriteAnim -o dist/sprite-anim.js -dv",
+    "build-dev": "browserify src/SpriteAnim.js --s SpriteAnim -o dist/sprite-anim.js",
+    "build-prod": "browserify src/SpriteAnim.js --s SpriteAnim | uglifyjs -o dist/sprite-anim.min.js",
+    "build": "npm run build-dev && npm run build-prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Manuel Odelain",
@@ -31,6 +33,7 @@
   "devDependencies": {
     "browserify": "^10.2.3",
     "http-server": "^0.8.0",
+    "uglifyjs": "^2.4.10",
     "watchify": "^3.2.1"
   }
 }
