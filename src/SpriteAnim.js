@@ -117,7 +117,7 @@ SpriteAnim.prototype.renderFrame = function() {
 
 SpriteAnim.prototype.dispose = function() {
   this.stop();
-  this.removeAllListeners();
+  this.off('complete').off('enterFrame');
 
   return this;
 };
