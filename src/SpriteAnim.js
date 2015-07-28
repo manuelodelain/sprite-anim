@@ -1,7 +1,7 @@
 'use strict';
 
-var EventEmitter = require('events').EventEmitter;
-var inherits = require('util').inherits;
+var TinyEmitter = require('tiny-emitter');
+var inherits = require('inherits');
 var Ticker = require('./Ticker');
 
 var ticker = new Ticker();
@@ -43,7 +43,7 @@ var SpriteAnim = function(parser, renderer, options) {
   this.alpha = 1;
 };
 
-inherits(SpriteAnim, EventEmitter);
+inherits(SpriteAnim, TinyEmitter);
 
 SpriteAnim.prototype.play = function() {
   this.isPlaying = true;

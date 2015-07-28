@@ -24,7 +24,9 @@
     "url": "https://github.com/manuelodelain/sprite-anim.git"
   },
   "dependencies": {
-    "raf": "^3.0.0"
+    "inherits": "^2.0.1",
+    "raf": "^3.0.0",
+    "tiny-emitter": "^1.0.0"
   },
   "devDependencies": {
     "browserify": "^10.2.3",
