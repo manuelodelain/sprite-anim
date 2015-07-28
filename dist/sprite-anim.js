@@ -531,6 +531,8 @@ var SpriteAnim = function(parser, renderer, options) {
   this.y = 0;
 
   this.alpha = 1;
+
+  return this;
 };
 
 inherits(SpriteAnim, TinyEmitter);
@@ -542,6 +544,8 @@ SpriteAnim.prototype.play = function() {
   if(!this.manualUpdate) {
     this.enterFrameId = ticker.add(this.enterFrameCb);
   }
+
+  return this;
 };
 
 SpriteAnim.prototype.pause = function() {
@@ -550,11 +554,15 @@ SpriteAnim.prototype.pause = function() {
   if(!this.manualUpdate) {
     ticker.remove(this.enterFrameId);
   }
+
+  return this;
 };
 
 SpriteAnim.prototype.stop = function() {
   this.pause();
   this.currentFrame = 0;
+
+  return this;
 };
 
 SpriteAnim.prototype.gotoAndPlay = function(frame) {
@@ -562,6 +570,8 @@ SpriteAnim.prototype.gotoAndPlay = function(frame) {
   this.complete = false;
 
   if (!this.isPlaying) this.play();
+
+  return this;
 };
 
 SpriteAnim.prototype.gotoAndStop = function(frame) {
@@ -569,27 +579,37 @@ SpriteAnim.prototype.gotoAndStop = function(frame) {
   this.currentFrame = frame;
 
   this.renderFrame();
+
+  return this;
 };
 
 SpriteAnim.prototype.nextFrame = function() {
   this.currentFrame++;
   if (this.currentFrame > this.lastFrame) this.currentFrame = this.lastFrame;
   if (this.currentFrame >= this.lastFrame) this.complete = true;
+
+  return this;
 };
 
 SpriteAnim.prototype.prevFrame = function() {
   this.currentFrame--;
   if (this.currentFrame < 0) this.currentFrame = 0;
   if (this.currentFrame <= 0) this.complete = true;
+
+  return this;
 };
 
 SpriteAnim.prototype.renderFrame = function() {
   this.renderer.render(this.parser.frames[this.currentFrame], this);
+
+  return this;
 };
 
 SpriteAnim.prototype.dispose = function() {
   this.stop();
   this.removeAllListeners();
+
+  return this;
 };
 
 SpriteAnim.prototype.onComplete = function() {
@@ -603,6 +623,8 @@ SpriteAnim.prototype.onComplete = function() {
   } else {
     this.pause();
   }
+
+  return this;
 };
 
 SpriteAnim.prototype.onEnterFrame = function(timeStamp) {
@@ -621,6 +643,8 @@ SpriteAnim.prototype.onEnterFrame = function(timeStamp) {
 
     this.emit('enterFrame');
   }
+
+  return this;
 };
 
 module.exports = SpriteAnim;
