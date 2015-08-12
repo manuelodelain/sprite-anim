@@ -1,6 +1,8 @@
 node_modules
-*.log
-.DS_Store
 examples/
-.npmignore
 LICENSE.md
+.DS_Store
+.npmignore
+*.log
+*.sublime-project
+*.sublime-workspace
