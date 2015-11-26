@@ -296,7 +296,7 @@ module.exports = E;
 
 var raf = require('raf');
 
-var callbackId = 0;
+var itemId = 0;
 
 var Ticker = function(){
   this.items = [];
@@ -319,7 +319,7 @@ Ticker.prototype.pause = function() {
 };
 
 Ticker.prototype.add = function(callback) {
-  var id = callbackId++;
+  var id = itemId++;
 
   this.items.push({
     id: id,
@@ -337,9 +337,10 @@ Ticker.prototype.remove = function(id) {
   for (var i = 0, n = this.items.length; i < n; i++){
     if (this.items[i].id === id){
       item = this.items.splice(i, 1)[0];
+      break;
     }
   }
-
+  
   if (this.items.length === 0) this.pause();
 
   return item;
@@ -347,9 +348,9 @@ Ticker.prototype.remove = function(id) {
 
 Ticker.prototype.onTick = function(timeStamp) {
   this.tickId = raf(this.tickCb);
-
+  
   for (var i = 0, n = this.items.length; i < n; i++){
-    this.items[i].cb(timeStamp);
+    if (this.items[i]) this.items[i].cb(timeStamp);
   }
 };
 
