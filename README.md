@@ -9,6 +9,7 @@ sprite-anim is a simple spritesheet animation engine.
 - common API (play / pause / stop / gotoAndPlay / gotoAndStop / dispose)
 - initialize frames with data (JSONArrayParser), automatically with dimensions (SimpleParser) or your own custom parser
 - works with DOM elements (DOMRenderer), canvas element (CanvasRenderer), off-screen canvas (OffScreenCanvasRenderer) or your own custom renderer
+- optimized for multiple animations (one requestAnimationFrame for all instances)
 
 ### Browser compatibility
 IE 6+ with DOM element, IE 9+ with DOM and canvas element.
@@ -41,8 +42,8 @@ require(['sprite-anim.js'], function(SpriteAnim){
 #### DOM element with spritesheet and frame dimensions
 
 ```
-var animElt = document.getElementById('anim');
-var renderer = new SpriteAnim.DOMRenderer(animElt);
+var element = document.getElementById('anim');
+var renderer = new SpriteAnim.DOMRenderer(element);
 var parser = new SpriteAnim.SimpleParser({width: 1410, height: 3960}, {width: 470, height: 120});
 var anim = new SpriteAnim(parser, renderer, {frameRate: 25});
 
@@ -52,8 +53,8 @@ anim.play();
 #### Canvas element with frames data
 
 ```
-var animElt = document.getElementById('anim');
-var renderer = new SpriteAnim.CanvasRenderer(animElt);
+var element = document.getElementById('anim');
+var renderer = new SpriteAnim.CanvasRenderer(element);
 var parser = new SpriteAnim.JSONArrayParser(framesData);
 var anim = new SpriteAnim(parser, renderer, {frameRate: 25});
 
@@ -176,10 +177,13 @@ Total frames
 Current frame index
 
 ##### `isPlaying` (`Boolean`)
-`true` if animation currently playing
+`true` if the animation is playing
+
+##### `reversed` (`Boolean`)
+`true` if the animation is playing reversed
 
 ##### `complete` (`Boolean`)
-`true` if animation complete
+`true` if the animation is complete
 
 
 #### methods
