@@ -53,12 +53,18 @@ anim.play();
 #### Canvas element with frames data
 
 ```
-var element = document.getElementById('anim');
-var renderer = new SpriteAnim.CanvasRenderer(element);
-var parser = new SpriteAnim.JSONArrayParser(framesData);
-var anim = new SpriteAnim(parser, renderer, {frameRate: 25});
+var img = new Image();
 
-anim.play();
+img.addEventListener('load', function(){
+  var element = document.getElementById('anim');
+  var renderer = new SpriteAnim.CanvasRenderer(element, img);
+  var parser = new SpriteAnim.JSONArrayParser(framesData); // framesData is your JSON data
+  var anim = new SpriteAnim(parser, renderer, {frameRate: 25});
+
+  anim.play();
+});
+
+img.src = 'images/anim.png';// your spritesheet image
 ```
 
 ### Parsers
