@@ -1,6 +1,6 @@
 {
   "name": "sprite-anim",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Simple spritesheet animation engine",
   "keywords": [
     "spritesheet",
