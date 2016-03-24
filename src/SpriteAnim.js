@@ -123,8 +123,6 @@ SpriteAnim.prototype.dispose = function() {
 };
 
 SpriteAnim.prototype.onComplete = function() {
-  this.emit('complete');
-
   if (this.loop) {
     if (this.yoyo) this.reversed = !this.reversed;
 
@@ -133,6 +131,8 @@ SpriteAnim.prototype.onComplete = function() {
   } else {
     this.pause();
   }
+
+  this.emit('complete');
 
   return this;
 };
