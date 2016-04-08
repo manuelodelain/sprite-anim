@@ -13,7 +13,7 @@
       height: 120px;
       margin-top: -60px;
       margin-left: -235px;
-      background-size: 1410px 3960px;
+      /*background-size: 1410px 3960px;*/
     }
 
     #source{
@@ -39,15 +39,16 @@
   <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script>-->
   <script src="../dist/sprite-anim.js"></script>
   <script>
-    var animElt = document.getElementById('anim');
-    var renderer = new SpriteAnim.DOMRenderer(animElt);
-    var parser = new SpriteAnim.SimpleParser({width: 1410, height: 3960}, {width: 470, height: 120});
-    var anim = new SpriteAnim(parser, renderer, {frameRate: 25});
-
     var img = new Image();
 
     img.addEventListener('load', function(){
-      animElt.style.backgroundImage = 'url(' + img.src + ')';
+      var animElt = document.getElementById('anim');
+      var scaleFactor = window.devicePixelRatio > 1 ? .5 : 1;
+      var renderer = new SpriteAnim.DOMRenderer(animElt, {sprite: img, scaleFactor: scaleFactor});
+      var parser = new SpriteAnim.SimpleParser({width: 1410, height: 3960}, {width: 470, height: 120});
+      var anim = new SpriteAnim(parser, renderer, {frameRate: 25});
+
+      // animElt.style.backgroundImage = 'url(' + img.src + ')';
       
       anim.play();
     });
