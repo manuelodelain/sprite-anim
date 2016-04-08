@@ -73,7 +73,7 @@ img.src = 'images/anim.png';// your spritesheet image
 Initialize frames directly with spritesheet image dimensions and frame dimensions.
 
 ##### Params
-- `spriteSize`: `Object` `{width: Number, height: Number}`
+- `spriteSize`: `Object`|`HTMLImageElement` `{width: Number, height: Number}`
 - `frameSize`: `Object` `{width: Number, height: Number}`
 
 #### JSONArrayParser
