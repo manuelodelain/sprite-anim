@@ -4,8 +4,11 @@ var SimpleParser = function(spriteSize, frameSize){
   this.numFrames = 0;
   this.frames = [];
 
-  var numFramesX = Math.ceil(spriteSize.width / frameSize.width);
-  var numFramesY = Math.ceil(spriteSize.height / frameSize.height);
+  var spriteWidth = spriteSize.naturalWidth ? spriteSize.naturalWidth : spriteSize.width;
+  var spriteHeight = spriteSize.naturalHeight ? spriteSize.naturalHeight : spriteSize.height;
+
+  var numFramesX = Math.ceil(spriteWidth / frameSize.width);
+  var numFramesY = Math.ceil(spriteHeight / frameSize.height);
 
   for (var i = 0; i < numFramesY; i++) {
     for (var j = 0; j < numFramesX; j++) {

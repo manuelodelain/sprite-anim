@@ -42,7 +42,7 @@
 
     img.addEventListener('load', function(){
       var renderer = new SpriteAnim.CanvasRenderer(document.getElementById('anim'), img);
-      var parser = new SpriteAnim.SimpleParser({width: 2820, height: 7920}, {width: 940, height: 240});
+      var parser = new SpriteAnim.SimpleParser(img, {width: 940, height: 240});
       var anim = new SpriteAnim(parser, renderer, {});
 
       anim.play();
