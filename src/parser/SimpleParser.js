@@ -1,5 +1,7 @@
 'use strict';
 
+var isArray = require('../utils/is-array');
+
 var SimpleParser = function(sprite, frameSize, options){
   this.frameSize = frameSize;
 
@@ -9,7 +11,7 @@ var SimpleParser = function(sprite, frameSize, options){
 
   this.frames = [];
 
-  if (Object.prototype.toString.call(sprite) === '[object Array]'){
+  if (isArray(sprite)){
     for (var i = 0, n = sprite.length; i < n; i++){
       this.initSpriteFrames(sprite[i], i);
     }

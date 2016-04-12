@@ -1,5 +1,8 @@
 'use strict';
 
+var defaultValues = require('../utils/default-values');
+var isArray = require('../utils/is-array');
+
 var CanvasRenderer = function(canvas, sprite, options){
   options = options || {};
 
@@ -7,13 +10,11 @@ var CanvasRenderer = function(canvas, sprite, options){
     clearFrame: true
   };
 
-  for (var optionName in defaultOptions){
-    this[optionName] = typeof options[optionName] !== 'undefined' ? options[optionName] : defaultOptions[optionName];
-  }
+  defaultValues(this, defaultOptions, options);
 
   this.canvas = canvas;
 
-  if (Object.prototype.toString.call(sprite) === '[object Array]'){
+  if (isArray(sprite)){
     this.sprites = sprite;
   }else{
     this.sprites = [sprite];

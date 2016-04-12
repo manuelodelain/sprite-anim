@@ -1,5 +1,7 @@
 'use strict';
 
+var isArray = require('../utils/is-array');
+
 var DOMRenderer = function(element, options){
   options = options || {};
 
@@ -15,7 +17,7 @@ var DOMRenderer = function(element, options){
 DOMRenderer.prototype.updateSprite = function() {
   var sprite;
 
-  if (Object.prototype.toString.call(this.sprite) === '[object Array]'){
+  if (isArray(this.sprite)){
     sprite = this.sprite[this.spriteIndex];
   }else{
     sprite = this.sprite;

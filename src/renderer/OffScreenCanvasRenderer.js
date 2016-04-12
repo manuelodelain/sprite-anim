@@ -1,8 +1,10 @@
 'use strict';
 
+var defaultValues = require('../utils/default-values');
+
 var OffScreenCanvasRenderer = function(canvas, sprite, options){
   options = options || {};
-  
+
   this.canvas = canvas;
   this.sprite = sprite;
 
@@ -10,9 +12,7 @@ var OffScreenCanvasRenderer = function(canvas, sprite, options){
     clearFrame: true
   };
 
-  for (var optionName in defaultOptions){
-    this[optionName] = typeof options[optionName] !== 'undefined' ? options[optionName] : defaultOptions[optionName];
-  }
+  defaultValues(this, defaultOptions, options);
   
   this.buffer = document.createElement('canvas');
   this.buffer.width = sprite.width;

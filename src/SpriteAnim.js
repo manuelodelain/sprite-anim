@@ -1,5 +1,7 @@
 'use strict';
 
+var defaultValues = require('./utils/default-values');
+
 var TinyEmitter = require('tiny-emitter');
 var inherits = require('inherits');
 var Ticker = require('./Ticker');
@@ -20,9 +22,7 @@ var SpriteAnim = function(parser, renderer, options) {
     numFrames: parser.numFrames
   };
 
-  for (var optionName in defaultOptions){
-    this[optionName] = typeof options[optionName] !== 'undefined' ? options[optionName] : defaultOptions[optionName];
-  }
+  defaultValues(this, defaultOptions, options);
 
   this.lastFrame = this.numFrames - 1;
 
