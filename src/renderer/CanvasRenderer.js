@@ -12,6 +12,13 @@ var CanvasRenderer = function(canvas, sprite, options){
   }
 
   this.canvas = canvas;
+
+  if (Object.prototype.toString.call(sprite) === '[object Array]'){
+    this.sprites = sprite;
+  }else{
+    this.sprites = [sprite];
+  }
+
   this.sprite = sprite;
 
   this.context = canvas.getContext('2d');
@@ -23,7 +30,7 @@ CanvasRenderer.prototype.render = function(frame, animation) {
   this.context.globalAlpha = animation.alpha;
 
   this.context.drawImage(
-    this.sprite,
+    this.sprites[frame.spriteIndex],
     frame.x,
     frame.y,
     frame.width,

@@ -6,18 +6,36 @@ var DOMRenderer = function(element, options){
   this.element = element;
 
   this.scaleFactor = options.scaleFactor || 1;
+  this.sprite = options.sprite;
 
-  if (options.sprite){
-    var spriteWidth = options.sprite.naturalWidth * this.scaleFactor;
-    var spriteHeight = options.sprite.naturalHeight * this.scaleFactor;
+  this.spriteIndex = 0;
+  if (this.sprite) this.updateSprite();
+};
 
-    this.element.style.backgroundImage = 'url(' + options.sprite.src + ')';
-    this.element.style.backgroundSize = spriteWidth + 'px ' + spriteHeight + 'px';
+DOMRenderer.prototype.updateSprite = function() {
+  var sprite;
+
+  if (Object.prototype.toString.call(this.sprite) === '[object Array]'){
+    sprite = this.sprite[this.spriteIndex];
+  }else{
+    sprite = this.sprite;
   }
+
+  var spriteWidth = sprite.naturalWidth * this.scaleFactor;
+  var spriteHeight = sprite.naturalHeight * this.scaleFactor;
+
+  this.element.style.backgroundImage = 'url(' + sprite.src + ')';
+  this.element.style.backgroundSize = spriteWidth + 'px ' + spriteHeight + 'px';
 };
 
 DOMRenderer.prototype.render = function(frame) {
-  this.element.style.backgroundPosition = '-' + frame.x + 'px -' + frame.y + 'px';
+  if (frame.spriteIndex !== this.spriteIndex){
+    this.spriteIndex = frame.spriteIndex;
+
+    this.updateSprite();
+  }
+
+  this.element.style.backgroundPosition = '-' + frame.x * this.scaleFactor + 'px -' + frame.y * this.scaleFactor + 'px';
 };
 
 module.exports = DOMRenderer;
