@@ -148,8 +148,10 @@ SpriteAnim.prototype.onEnterFrame = function(timeStamp) {
       return;
     }
 
-    if (!this.reversed) this.nextFrame();
-    else this.prevFrame();
+    if (this.isPlaying){
+      if (!this.reversed) this.nextFrame();
+      else this.prevFrame();
+    }
 
     this.emit('enterFrame');
   }
