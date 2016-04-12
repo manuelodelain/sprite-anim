@@ -1,6 +1,6 @@
-node_modules
+node_modules/
 examples/
-LICENSE.md
+
 .DS_Store
 .npmignore
 *.log
