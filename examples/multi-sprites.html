@@ -41,6 +41,7 @@
     var sprites = [];
     var numSprites = 7;
     var loadedSpritesNum = 0;
+    var element = document.getElementById('anim');
 
     // load spritesheets
     for (var i = 0; i < numSprites; i++){
@@ -63,8 +64,8 @@
     function onSpritesLoaded(){
       var parser = new SpriteAnim.SimpleParser(sprites, {width: 940, height: 240}, {numFrames: 99});
       
-      var renderer = new SpriteAnim.CanvasRenderer(document.getElementById('anim'), sprites);
-      // var renderer = new SpriteAnim.DOMRenderer(document.getElementById('anim'), {sprite: sprites, scaleFactor: .5});
+      var renderer = new SpriteAnim.CanvasRenderer(element, sprites);
+      // var renderer = new SpriteAnim.DOMRenderer(element, {sprite: sprites, scaleFactor: .5});
 
       var anim = new SpriteAnim(parser, renderer, {frameRate: 25});
 
