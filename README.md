@@ -10,6 +10,7 @@ sprite-anim is a simple spritesheet animation engine.
 - initialize frames with data (JSONArrayParser), automatically with dimensions (SimpleParser) or your own custom parser
 - works with DOM elements (DOMRenderer), canvas element (CanvasRenderer), off-screen canvas (OffScreenCanvasRenderer) or your own custom renderer
 - optimized for multiple animations (one requestAnimationFrame for all instances)
+- single animation with multiple spritesheets support
 
 ### Browser compatibility
 IE 6+ with DOM element, IE 9+ with DOM and canvas element.
@@ -73,7 +74,7 @@ img.src = 'images/anim.png';// your spritesheet image
 Initialize frames directly with spritesheet image dimensions and frame dimensions.
 
 ##### Params
-- `spriteSize`: `Object`|`HTMLImageElement` `{width: Number, height: Number}`
+- `sprite`: `Object` `{width: Number, height: Number}` || `HTMLImageElement` (loaded image) || `Array` Objects with width/height values or loaded images
 - `frameSize`: `Object` `{width: Number, height: Number}`
 
 #### JSONArrayParser
@@ -108,13 +109,17 @@ Render frame with a DOM element (`background-position`).
 
 ##### Params
 - `element`: DOM element
+- `options` (optional): `Object`
+  - `scaleFactor`: `Number`
+  - `sprite`: `HTMLImageElement` loaded image || `Array` loaded images (multiple spritesheets). 
+  Auto set background image/size.
 
 #### CanvasRenderer
 Render frame with a `canvas` element (`drawImage`).
 
 ##### Params
 - `canvas`: canvas element
-- `sprite`: `Image` spritesheet image
+- `sprite`: `HTMLImageElement` loaded spritesheet image || || `Array` loaded spritesheet images (multiple spritesheets)
 - `options` (`Object`): 
   - `clearFrame` (`Boolean`): clear frame on render
 
