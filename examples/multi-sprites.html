@@ -38,18 +38,38 @@
   <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script>-->
   <script src="../dist/sprite-anim.js"></script>
   <script>
-    var img = new Image();
+    var sprites = [];
+    var numSprites = 7;
+    var loadedSpritesNum = 0;
 
-    img.addEventListener('load', function(){
-      var renderer = new SpriteAnim.CanvasRenderer(document.getElementById('anim'), img);
-      var parser = new SpriteAnim.SimpleParser(img, {width: 940, height: 240});
+    // load spritesheets
+    for (var i = 0; i < numSprites; i++){
+      var sprite = new Image();
+
+      sprite.onload = function(){
+        loadedSpritesNum++;
+
+        if (loadedSpritesNum === numSprites){
+          onSpritesLoaded();
+        }
+      };
+
+      sprites.push(sprite);
+
+      sprite.src = 'images/anim-' + i + '.png';
+    }
+
+    // on all spritesheets loaded
+    function onSpritesLoaded(){
+      var parser = new SpriteAnim.SimpleParser(sprites, {width: 940, height: 240}, {numFrames: 99});
+      
+      var renderer = new SpriteAnim.CanvasRenderer(document.getElementById('anim'), sprites);
+      // var renderer = new SpriteAnim.DOMRenderer(document.getElementById('anim'), {sprite: sprites, scaleFactor: .5});
 
       var anim = new SpriteAnim(parser, renderer, {frameRate: 25});
 
       anim.play();
-    });
-
-    img.src = 'images/anim.png';
+    }
   </script>
 </body>
 </html>

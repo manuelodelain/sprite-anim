@@ -43,9 +43,10 @@
 
     img.addEventListener('load', function(){
       var animElt = document.getElementById('anim');
-      var scaleFactor = window.devicePixelRatio > 1 ? .5 : 1;
-      var renderer = new SpriteAnim.DOMRenderer(animElt, {sprite: img, scaleFactor: scaleFactor});
-      var parser = new SpriteAnim.SimpleParser({width: 1410, height: 3960}, {width: 470, height: 120});
+
+      var parser = new SpriteAnim.SimpleParser(img, {width: 940, height: 240});
+      var renderer = new SpriteAnim.DOMRenderer(animElt, {sprite: img, scaleFactor: .5});
+
       var anim = new SpriteAnim(parser, renderer, {frameRate: 25});
 
       // animElt.style.backgroundImage = 'url(' + img.src + ')';
