@@ -43,7 +43,7 @@
     img.addEventListener('load', function(){
       var renderer = new SpriteAnim.OffScreenCanvasRenderer(document.getElementById('anim'), img);
       var parser = new SpriteAnim.SimpleParser({width: 2820, height: 7920}, {width: 940, height: 240});
-      var anim = new SpriteAnim(parser, renderer, {});
+      var anim = new SpriteAnim(parser, renderer, {frameRate: 25});
 
       anim.play();
     });

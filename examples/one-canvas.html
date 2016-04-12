@@ -51,20 +51,19 @@
     var frameSize = {width: 940, height: 240};
 
     img.addEventListener('load', function(){
-      var parser1 = new SpriteAnim.SimpleParser({width: 2820, height: 7920}, frameSize);
+      var parser = new SpriteAnim.SimpleParser({width: 2820, height: 7920}, frameSize);
       var renderer1 = new SpriteAnim.CanvasRenderer(canvas, img, {clearFrame: false});
 
-      anim = new SpriteAnim(parser1, renderer1, {manualUpdate: true, loop: true, frameRate: 25});
+      anim = new SpriteAnim(parser, renderer1, {manualUpdate: true, loop: true, frameRate: 25});
       anim.alpha = 0.5;
       anim.x = (canvas.width - frameSize.width) * .5;
       anim.y = (canvas.height - frameSize.height) * .5 - frameSize.height;
       anim.on('complete', onAnimComplete);
       anim.play();
 
-      var parser2 = new SpriteAnim.SimpleParser({width: 2820, height: 7920}, frameSize);
-      var renderer2 = new SpriteAnim.CanvasRenderer(canvas, img, {clearFrame: false});
+      var renderer2 = new SpriteAnim.OffScreenCanvasRenderer(canvas, img, {clearFrame: false});
 
-      anim2 = new SpriteAnim(parser2, renderer2, {manualUpdate: true, loop: true, frameRate: 25, yoyo: true});
+      anim2 = new SpriteAnim(parser, renderer2, {manualUpdate: true, loop: true, frameRate: 25, yoyo: true});
       anim2.x = (canvas.width - frameSize.width) * .5;
       anim2.y = (canvas.height - frameSize.height) * .5;
       
