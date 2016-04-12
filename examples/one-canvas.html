@@ -5,14 +5,18 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Sprite anim - canvas</title>
   <style>
+    body{
+      overflow: hidden;
+    }
+
     #anim{
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 470px;
-      height: 120px;
-      margin-top: -60px;
-      margin-left: -235px;
+      width: 1000px;
+      height: 500px;
+      margin-top: -250px;
+      margin-left: -500px;
     }
 
     #source{
@@ -33,35 +37,54 @@
   </style>
 </head>
 <body>
-  <canvas id="anim" width="940" height="240"></canvas>
+  <canvas id="anim" width="2000" height="1000"></canvas>
   <div id="source">Animated typeface from Animography <a href="http://animography.net/products/franchise">http://animography.net/products/franchise</a></div>
   <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script>-->
   <script src="../dist/sprite-anim.js"></script>
   <script>
     var img = new Image();
     var anim;
+    var anim2;
     var rafId;
     var canvas = document.getElementById('anim');
     var context = canvas.getContext('2d');
+    var frameSize = {width: 940, height: 240};
 
     img.addEventListener('load', function(){
-      var renderer = new SpriteAnim.CanvasRenderer(canvas, img, {clearFrame: false});
-      var parser = new SpriteAnim.SimpleParser({width: 2820, height: 7920}, {width: 940, height: 240});
+      var parser1 = new SpriteAnim.SimpleParser({width: 2820, height: 7920}, frameSize);
+      var renderer1 = new SpriteAnim.CanvasRenderer(canvas, img, {clearFrame: false});
 
-      anim = new SpriteAnim(parser, renderer, {manualUpdate: true, loop: true});
+      anim = new SpriteAnim(parser1, renderer1, {manualUpdate: true, loop: true, frameRate: 25});
       anim.alpha = 0.5;
+      anim.x = (canvas.width - frameSize.width) * .5;
+      anim.y = (canvas.height - frameSize.height) * .5 - frameSize.height;
       anim.on('complete', onAnimComplete);
       anim.play();
+
+      var parser2 = new SpriteAnim.SimpleParser({width: 2820, height: 7920}, frameSize);
+      var renderer2 = new SpriteAnim.CanvasRenderer(canvas, img, {clearFrame: false});
+
+      anim2 = new SpriteAnim(parser2, renderer2, {manualUpdate: true, loop: true, frameRate: 25, yoyo: true});
+      anim2.x = (canvas.width - frameSize.width) * .5;
+      anim2.y = (canvas.height - frameSize.height) * .5;
+      
+      setTimeout(function(){
+        anim2.play();
+      }, 1000);
+
       rafId = requestAnimationFrame(render);
     });
 
     function render(timeStamp){
       rafId = requestAnimationFrame(render);
 
-      context.clearRect(0, 0, 940, 240);
+      context.clearRect(0, 0, canvas.width, canvas.height);
 
       anim.onEnterFrame(timeStamp);
       anim.renderFrame();
+
+      anim2.onEnterFrame(timeStamp);
+      anim2.renderFrame();
     }
 
     function onAnimComplete(){
