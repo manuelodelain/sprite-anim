@@ -410,7 +410,10 @@ var SimpleParser = function(sprite, frameSize, options){
 SimpleParser.prototype.initSpriteFrames = function(sprite, spriteIndex){
   var spriteWidth = sprite.naturalWidth || sprite.width;
   var spriteHeight = sprite.naturalHeight || sprite.height;
-
+  
+  var offsetX = sprite.offsetX || 0;
+  var offsetY = sprite.offsetY || 0;
+  
   spriteWidth *= this.scaleFactor;
   spriteHeight *= this.scaleFactor;
 
@@ -422,8 +425,8 @@ SimpleParser.prototype.initSpriteFrames = function(sprite, spriteIndex){
 
     for (var j = 0; j < numFramesX; j++) {
       this.frames.push({
-        x: j * this.frameSize.width,
-        y: i * this.frameSize.height,
+        x: j * this.frameSize.width + offsetX,
+        y: i * this.frameSize.height + offsetY,
         index: this.frames.length,
         width: this.frameSize.width,
         height: this.frameSize.height,
